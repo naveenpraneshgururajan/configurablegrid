@@ -1,67 +1,102 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-
-const API_URL = "http://localhost:8000";
+import NumberHeatGenerator from "./pages/NumberHeatGenerator";
+import TimeHeatMapGenerator from "./pages/TimeHeatMapGenerator";
+import RangeHeatmapGenerator from "./pages/RangeHeatmapGenerator";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [config, setConfig] = useState({ columns: [], styles: {} });
+  // const [configurations, setConfigurations] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    axios.get(`${API_URL}/config`).then((res) => setConfig(res.data));
-    axios.get(`${API_URL}/data`).then((res) => setData(res.data));
-  }, []);
+  // // useEffect(() => {
+  // //   const fetchConfigurations = async () => {
+  // //     try {
+  // //       const response = await fetch(
+  // //         "http://localhost:5000/api/configurations"
+  // //       );
+  // //       const data = await response.json();
+  // //       setConfigurations(data.configurations);
+  // //     } catch (error) {
+  // //       console.error("Error fetching configurations:", error);
+  // //     } finally {
+  // //       setLoading(false);
+  // //     }
+  // //   };
 
-  const isRecent = (timestamp) => {
-    const now = new Date();
-    const ts = new Date(timestamp);
-    return (now - ts) / (1000 * 60 * 60) < 24;
-  };
-
-  const getRowStyle = (row) => {
-    if (
-      config.styles.recentHighlight &&
-      isRecent(row[config.styles.recentHighlight])
-    ) {
-      return { backgroundColor: "#e6ffed" };
-    } else {
-      return { backgroundColor: "#ffe6e6" };
-    }
-  };
-
-  const getCellStyle = (key, value) => {
-    if (config.styles.heatmap === key) {
-      const color = value > 75 ? "#ff9999" : value > 50 ? "#ffcc99" : "#ffffcc";
-      return { backgroundColor: color };
-    }
-    return {};
-  };
+  // //   fetchConfigurations();
+  // // }, []);
 
   return (
-    <div className="App">
-      <h2>Configurable Grid</h2>
-      <table>
-        <thead>
-          <tr>
-            {config.columns.map((col) => (
-              <th key={col}>{col}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row) => (
-            <tr key={row.id} style={getRowStyle(row)}>
-              {config.columns.map((col) => (
-                <td key={col} style={getCellStyle(col, row[col])}>
-                  {row[col]}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Router>
+      <div className="app">
+        <header className="app-header">
+          <h1>HeatMap Generator Project</h1>
+          <nav className="app-nav">
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/numberheatmap">Number Heatmap</Link>
+              </li>
+              <li>
+                <Link to="/timeheatmap">Time Heatmap</Link>
+              </li>
+              <li>
+                <Link to="/rangeheatmap">Range Heatmap</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <main className="app-content">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div className="home-container">
+                  <h2>Heatmap Generator</h2>
+                  <p>This generates display heatmap based on the the data .</p>
+                  <div className="example-cards">
+                    <div className="example-card">
+                      <h3>Number Heatmap</h3>
+                      <p>Displays heatmap based on numeric values.</p>
+                      <Link to="/numberheatmap" className="btn">
+                        View Heatmap
+                      </Link>
+                    </div>
+                    <div className="example-card">
+                      <h3> Time Heatmap </h3>
+                      <p>Shows heatmap based on the Time</p>
+                      <Link to="/timeheatmap" className="btn">
+                        View Heatmap
+                      </Link>
+                    </div>
+                    <div className="example-card">
+                      <h3>Range Heatmap</h3>
+                      <p>
+                        Applies different styles to cells based on value ranges.
+                      </p>
+                      <Link to="/rangeheatmap" className="btn">
+                        View Heatmap
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              }
+            />
+            <Route path="/numberheatmap" element={<NumberHeatGenerator />} />
+            <Route path="/timeheatmap" element={<TimeHeatMapGenerator />} />
+            <Route path="/rangeheatmap" element={<RangeHeatmapGenerator />} />
+          </Routes>
+        </main>
+
+        <footer className="app-footer">
+          <p>&copy; 2025 Heatmap Generator</p>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
