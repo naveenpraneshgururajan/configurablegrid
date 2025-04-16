@@ -5,7 +5,7 @@ import ConfigurableGrid from "../../components/ConfigurableGrid";
 const RangeHeatmapGenerator = () => {
   return (
     <div className="example-container">
-      <h2>Range Style Example</h2>
+      <h2>Range Heatmap</h2>
       <p className="example-description">
         This example demonstrates how to apply different styles to cells based
         on value ranges. CPU and Memory usage values are colored green, orange,
@@ -24,7 +24,7 @@ const RangeHeatmapGenerator = () => {
         <ConfigurableGrid configId="rangeheatmap" />
       </div>
       <div className="example-code">
-        <h3>Configuration Example:</h3>
+        <h3>Example of How Config is returned from the API:</h3>
         <pre>
           {`{
   "id": "rangeheatmap",

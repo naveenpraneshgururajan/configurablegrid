@@ -5,7 +5,7 @@ import ConfigurableGrid from "../../components/ConfigurableGrid";
 const TimeHeatMapGenerator = () => {
   return (
     <div className="example-container">
-      <h2>Simplified Time Heatmap Example</h2>
+      <h2>Time Heatmap</h2>
       <p className="example-description">
         This example shows a simplified approach to coloring rows based on time.
         Items are colored along a gradient from green (newest) to red (oldest),
@@ -23,7 +23,7 @@ const TimeHeatMapGenerator = () => {
         <ConfigurableGrid configId="timestamp" />
       </div>
       <div className="example-code">
-        <h3>Configuration Example:</h3>
+        <h3>Example of How Config is returned from the API:</h3>
         <pre>
           {`{
   "id": "timestamp",

@@ -21,7 +21,7 @@ describe("GridHeader", () => {
     );
   };
 
-  test("renders header with correct text", () => {
+  it("renders header with correct text", () => {
     const { getByText } = renderWithTableStructure(
       <GridHeader
         column={mockColumn}
@@ -33,7 +33,7 @@ describe("GridHeader", () => {
     expect(getByText("Test Header")).toBeInTheDocument();
   });
 
-  test("applies width style from column configuration", () => {
+  it("applies width style from column configuration", () => {
     const { container } = renderWithTableStructure(
       <GridHeader
         column={mockColumn}
@@ -45,7 +45,7 @@ describe("GridHeader", () => {
     expect(container.querySelector("th")).toHaveStyle("width: 100px");
   });
 
-  test("uses auto width when not specified", () => {
+  it("uses auto width when not specified", () => {
     const columnWithoutWidth = {
       field: "test",
       header: "Test Header",
@@ -62,7 +62,7 @@ describe("GridHeader", () => {
     expect(container.querySelector("th")).toHaveStyle("width: auto");
   });
 
-  test("calls onSort when header is clicked", () => {
+  it("calls onSort when header is clicked", () => {
     const onSortMock = jest.fn();
 
     const { getByText } = renderWithTableStructure(
@@ -77,7 +77,7 @@ describe("GridHeader", () => {
     expect(onSortMock).toHaveBeenCalledWith("test");
   });
 
-  test("shows ascending sort indicator when sorted ascending", () => {
+  it("shows ascending sort indicator when sorted ascending", () => {
     const { getByText } = renderWithTableStructure(
       <GridHeader
         column={mockColumn}
@@ -89,7 +89,7 @@ describe("GridHeader", () => {
     expect(getByText("▲")).toBeInTheDocument();
   });
 
-  test("shows descending sort indicator when sorted descending", () => {
+  it("shows descending sort indicator when sorted descending", () => {
     const { getByText } = renderWithTableStructure(
       <GridHeader
         column={mockColumn}
@@ -101,7 +101,7 @@ describe("GridHeader", () => {
     expect(getByText("▼")).toBeInTheDocument();
   });
 
-  test("does not show sort indicator when not sorted", () => {
+  it("does not show sort indicator when not sorted", () => {
     const { container } = renderWithTableStructure(
       <GridHeader
         column={mockColumn}
@@ -113,7 +113,7 @@ describe("GridHeader", () => {
     expect(container.querySelector(".sort-indicator")).toBeNull();
   });
 
-  test("adds sorted class when column is sorted", () => {
+  it("adds sorted class when column is sorted", () => {
     const { container } = renderWithTableStructure(
       <GridHeader
         column={mockColumn}
@@ -125,7 +125,7 @@ describe("GridHeader", () => {
     expect(container.querySelector("th")).toHaveClass("sorted");
   });
 
-  test("does not add sorted class when column is not sorted", () => {
+  it("does not add sorted class when column is not sorted", () => {
     const { container } = renderWithTableStructure(
       <GridHeader
         column={mockColumn}

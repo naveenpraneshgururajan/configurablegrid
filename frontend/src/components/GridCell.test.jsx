@@ -42,7 +42,7 @@ describe("GridCell", () => {
     formatCellValue.mockImplementation((value) => value?.toString() || "");
   });
 
-  test("renders cell with formatted value", () => {
+  it("renders cell with formatted value", () => {
     const { getByText } = renderWithTableStructure(
       <GridCell
         value="test value"
@@ -56,7 +56,7 @@ describe("GridCell", () => {
     expect(formatCellValue).toHaveBeenCalledWith("test value", "test");
   });
 
-  test("applies number heatmap styling", () => {
+  it("applies number heatmap styling", () => {
     const column = {
       field: "value",
       header: "Value",
@@ -83,7 +83,7 @@ describe("GridCell", () => {
     );
   });
 
-  test("applies range heatmap styling", () => {
+  it("applies range heatmap styling", () => {
     const column = {
       field: "value",
       header: "Value",
@@ -112,7 +112,7 @@ describe("GridCell", () => {
     );
   });
 
-  test("applies cell-specific styling", () => {
+  it("applies cell-specific styling", () => {
     const cellStyles = [
       {
         field: "status",
@@ -136,7 +136,7 @@ describe("GridCell", () => {
     expect(container.querySelector("td")).toHaveStyle("font-weight: bold");
   });
 
-  test("combines multiple styles", () => {
+  it("combines multiple styles", () => {
     const column = {
       field: "value",
       header: "Value",
@@ -171,7 +171,7 @@ describe("GridCell", () => {
     });
   });
 
-  test("handles null values", () => {
+  it("handles null values", () => {
     const { container } = renderWithTableStructure(
       <GridCell
         value={null}

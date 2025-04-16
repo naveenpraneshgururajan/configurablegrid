@@ -4,7 +4,7 @@ import ConfigurableGrid from "../../components/ConfigurableGrid";
 const NumberHeatGenerator = () => {
   return (
     <div className="example-container">
-      <h2>Heatmap Example</h2>
+      <h2>Number Heatmap</h2>
       <p className="example-description">
         This example demonstrates how to color cells as a heatmap based on their
         numeric values. Higher values appear with stronger colors. Look at the

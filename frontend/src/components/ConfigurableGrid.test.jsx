@@ -85,7 +85,7 @@ describe("ConfigurableGrid", () => {
     jest.clearAllMocks();
   });
 
-  test("renders loading state initially", async () => {
+  it("renders loading state initially", async () => {
     // Use a delayed promise to properly test loading state
     let resolveConfig;
     const configPromise = new Promise((resolve) => {
@@ -106,7 +106,7 @@ describe("ConfigurableGrid", () => {
     });
   });
 
-  test("renders grid with data after loading", async () => {
+  it("renders grid with data after loading", async () => {
     // Setup mocks
     getConfiguration.mockResolvedValue(mockConfig);
     getGridData.mockResolvedValue(mockData);
@@ -132,7 +132,7 @@ describe("ConfigurableGrid", () => {
     expect(screen.getByText("Item 3")).toBeInTheDocument();
   });
 
-  test("handles API errors correctly", async () => {
+  it("handles API errors correctly", async () => {
     // Mock configuration to reject with error
     getConfiguration.mockRejectedValue(new Error("Failed to load config"));
 
@@ -146,7 +146,7 @@ describe("ConfigurableGrid", () => {
     });
   });
 
-  test("shows error when no configuration is found", async () => {
+  it("shows error when no configuration is found", async () => {
     // Mock configuration returning null
     getConfiguration.mockResolvedValue(null);
 
@@ -158,7 +158,7 @@ describe("ConfigurableGrid", () => {
     });
   });
 
-  test("handles pagination correctly", async () => {
+  it("handles pagination correctly", async () => {
     const mockDataPage1 = {
       data: [{ id: 1, name: "Item 1", status: "active", value: 75 }],
       total: 2,
@@ -198,7 +198,7 @@ describe("ConfigurableGrid", () => {
     expect(getGridData).toHaveBeenLastCalledWith("test-config", 2, 10);
   });
 
-  test("handles sorting correctly", async () => {
+  it("handles sorting correctly", async () => {
     // Setup mocks
     getConfiguration.mockResolvedValue(mockConfig);
     getGridData.mockResolvedValue(mockData);
@@ -236,7 +236,7 @@ describe("ConfigurableGrid", () => {
     });
   });
 
-  test("evaluates row conditions correctly", async () => {
+  it("evaluates row conditions correctly", async () => {
     // Create a date 10 days ago
     const oldDate = new Date();
     oldDate.setDate(oldDate.getDate() - 10);
