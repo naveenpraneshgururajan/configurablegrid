@@ -1,7 +1,6 @@
-// Updated GridHeader.test.jsx
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import GridHeader from "../components/GridHeader"; // Update path as needed
+import GridHeader from "../components/GridHeader";
 
 describe("GridHeader", () => {
   const mockColumn = {

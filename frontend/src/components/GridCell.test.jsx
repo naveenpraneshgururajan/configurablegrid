@@ -1,4 +1,3 @@
-// src/components/__tests__/GridCell.test.jsx
 import React from "react";
 import { render } from "@testing-library/react";
 import GridCell from "../components/GridCell";

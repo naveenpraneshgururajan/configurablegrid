@@ -13,7 +13,6 @@ export const getConfiguration = async (configId) => {
     }
     return await response.json();
   } catch (error) {
-    console.error(`Error fetching configuration ${configId}:`, error);
     throw error;
   }
 };
@@ -37,7 +36,6 @@ export const getGridData = async (configId, page = 1, pageSize = 10) => {
     }
     return await response.json();
   } catch (error) {
-    console.error(`Error fetching data for configuration ${configId}:`, error);
     throw error;
   }
 };

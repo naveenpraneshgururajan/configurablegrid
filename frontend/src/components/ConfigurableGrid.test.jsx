@@ -1,4 +1,3 @@
-// src/components/__tests__/ConfigurableGrid.test.jsx
 import React from "react";
 import {
   render,

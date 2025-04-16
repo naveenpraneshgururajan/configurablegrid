@@ -60,21 +60,21 @@ function App() {
                   <p>This generates display heatmap based on the the data .</p>
                   <div className="example-cards">
                     <div className="example-card">
-                      <h3>Number Heatmap</h3>
+                      <h3>Number Heatmaps</h3>
                       <p>Displays heatmap based on numeric values.</p>
                       <Link to="/numberheatmap" className="btn">
                         View Heatmap
                       </Link>
                     </div>
                     <div className="example-card">
-                      <h3> Time Heatmap </h3>
+                      <h3> Time Heatmaps </h3>
                       <p>Shows heatmap based on the Time</p>
                       <Link to="/timeheatmap" className="btn">
                         View Heatmap
                       </Link>
                     </div>
                     <div className="example-card">
-                      <h3>Range Heatmap</h3>
+                      <h3>Range Heatmaps</h3>
                       <p>
                         Applies different styles to cells based on value ranges.
                       </p>
