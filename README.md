@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Configurable Grid Heatmap Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack application with a React frontend and FastAPI backend that demonstrates a configurable grid system.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This project consists of two main components:
 
-### `npm start`
+- **Frontend**: A React application for displaying and the heatmap for different types of Data
+- **Backend**: A Python FastAPI service that provides data and configuration required for the grid system
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+configurable-grid-demo/
+├── frontend/             # React application
+│   ├── public/           # Static files
+│   ├── src/              # React source code
+│   ├── package.json      # Frontend dependencies
+│   └── ...
+├── backend/              # FastAPI service
+│   ├── requirements.txt  # Python dependencies
+│   ├── main.py           # FastAPI entry point
+│   └── ...
+└── README.md             # This file
+```
 
-### `npm test`
+## Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v14+)
+- Python (v3.8+)
+- npm or yarn
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Navigate to frontend directory
+cd frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Start development server
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The frontend will be available at [http://localhost:3000](http://localhost:3000).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+# Navigate to backend directory
+cd backend
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Install dependencies
+pip install -r requirements.txt
 
-## Learn More
+# Start the FastAPI server
+uvicorn main:app --reload
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The backend API will be available at [http://localhost:8000](http://localhost:8000).
+API documentation will be available at [http://localhost:8000/docs](http://localhost:8000/docs).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technologies Used
 
-### Code Splitting
+### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- React 18
+- React Router DOM
+- Jest for testing
 
-### Analyzing the Bundle Size
+### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- FastAPI
+- Uvicorn as ASGI server
+- python-dotenv for environment variable management
 
-### Making a Progressive Web App
+## Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Environment Variables
 
-### Advanced Configuration
+Create a `.env` file if necessary. For this project no env variables were used or created.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Testing
 
-### Deployment
+### Frontend Tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+cd frontend
+npm test
+```
 
-### `npm run build` fails to minify
+### Backend Tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+cd backend
+pytest
+```
+
+## Deployment
+
+### Building for Production
+
+```bash
+# Frontend build
+cd frontend
+npm run build
+
+# The build artifacts will be stored in the frontend/build/ directory
+```
+
+Package the backend according to your hosting requirements.
+
+## License
+
+[MIT License](LICENSE)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request

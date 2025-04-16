@@ -1,21 +1,4 @@
-const API_BASE_URL = "http://localhost:5000/api";
-
-/**
- * Fetch all grid configurations
- * @returns {Promise} - Resolves to configuration list
- */
-export const getConfigurations = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/configurations`);
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching configurations:", error);
-    throw error;
-  }
-};
+const API_BASE_URL = "http://localhost:8000/api";
 
 /**
  * Fetch a specific grid configuration
