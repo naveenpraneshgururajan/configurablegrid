@@ -3,14 +3,20 @@
  * @param {number} value - Current value
  * @param {number} min - Minimum value
  * @param {number} max - Maximum value
+ * @param {boolean} invertColor - Whether to invert the color scale
  * @returns {string} - HSL color string
  */
-export const getHeatmapColor = (value, min, max) => {
+export const getHeatmapColor = (value, min, max, invertColor = false) => {
   const bounded = Math.max(min, Math.min(max, value));
-  const percent = (bounded - min) / (max - min);
+  let percent = (bounded - min) / (max - min);
+
+  // If invertColor is true, flip the percentage
+  if (invertColor) {
+    percent = 1 - percent;
+  }
 
   // HSL from green (120) to red (0)
-  const hue = (1 - percent) * 120;
+  const hue = percent * 120;
 
   return `hsl(${hue}, 100%, 50%)`;
 };

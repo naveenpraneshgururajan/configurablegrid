@@ -31,6 +31,8 @@ const ConfigurableGrid = ({ configId }) => {
       } catch (err) {
         setError(`Error loading configuration: ${err.message}`);
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
     if (configId) {

@@ -1,6 +1,6 @@
 // src/examples/RangeStyleExample.jsx
 import React from "react";
-import ConfigurableGrid from "../components/ConfigurableGrid";
+import ConfigurableGrid from "../../components/ConfigurableGrid";
 
 const RangeHeatmapGenerator = () => {
   return (

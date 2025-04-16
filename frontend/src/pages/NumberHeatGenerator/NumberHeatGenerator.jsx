@@ -1,5 +1,5 @@
 import React from "react";
-import ConfigurableGrid from "../components/ConfigurableGrid";
+import ConfigurableGrid from "../../components/ConfigurableGrid";
 
 const NumberHeatGenerator = () => {
   return (

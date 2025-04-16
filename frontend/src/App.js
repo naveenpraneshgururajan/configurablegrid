@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import NumberHeatGenerator from "./pages/NumberHeatGenerator";
-import TimeHeatMapGenerator from "./pages/TimeHeatMapGenerator";
-import RangeHeatmapGenerator from "./pages/RangeHeatmapGenerator";
+import NumberHeatGenerator from "./pages/NumberHeatGenerator/NumberHeatGenerator";
+import TimeHeatMapGenerator from "./pages/TimeHeatMapGenerator/TimeHeatMapGenerator";
+import RangeHeatmapGenerator from "./pages/RangeHeatmapGenerator/RangeHeatmapGenerator";
 
 function App() {
   // const [configurations, setConfigurations] = useState([]);

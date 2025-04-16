@@ -1,6 +1,5 @@
 // src/components/GridCell.jsx
 import React from "react";
-import PropTypes from "prop-types";
 import {
   getHeatmapColor,
   getRangeStyle,
@@ -18,7 +17,12 @@ const GridCell = ({ value, column, row, cellStyles }) => {
     switch (style.type) {
       case "numberheatmap":
         return {
-          backgroundColor: getHeatmapColor(value, style.min, style.max),
+          backgroundColor: getHeatmapColor(
+            value,
+            style.min,
+            style.max,
+            style.invertColor // Pass the invertColor option
+          ),
         };
       case "rangeheatmap":
         return getRangeStyle(value, style.ranges);
@@ -47,32 +51,6 @@ const GridCell = ({ value, column, row, cellStyles }) => {
   const formattedValue = formatCellValue(value, column.field);
 
   return <td style={combinedStyle}>{formattedValue}</td>;
-};
-
-GridCell.propTypes = {
-  value: PropTypes.any,
-  column: PropTypes.shape({
-    field: PropTypes.string.isRequired,
-    header: PropTypes.string.isRequired,
-    width: PropTypes.string,
-    style: PropTypes.object,
-  }).isRequired,
-  row: PropTypes.object.isRequired,
-  cellStyles: PropTypes.arrayOf(
-    PropTypes.shape({
-      field: PropTypes.string.isRequired,
-      conditions: PropTypes.arrayOf(
-        PropTypes.shape({
-          value: PropTypes.any,
-          style: PropTypes.object.isRequired,
-        })
-      ).isRequired,
-    })
-  ),
-};
-
-GridCell.defaultProps = {
-  cellStyles: [],
 };
 
 export default GridCell;
