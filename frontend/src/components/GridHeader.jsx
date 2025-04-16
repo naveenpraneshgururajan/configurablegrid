@@ -1,4 +1,4 @@
-// src/components/GridHeader.jsx
+// Updated GridHeader.jsx
 import React from "react";
 
 const GridHeader = ({ column, sortConfig, onSort }) => {

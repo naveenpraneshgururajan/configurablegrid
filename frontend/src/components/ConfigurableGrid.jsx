@@ -30,7 +30,6 @@ const ConfigurableGrid = ({ configId }) => {
         setConfig(configData);
       } catch (err) {
         setError(`Error loading configuration: ${err.message}`);
-        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -51,6 +50,10 @@ const ConfigurableGrid = ({ configId }) => {
           pagination.page,
           pagination.pageSize
         );
+        if (!result || !result.data) {
+          throw new Error("Invalid data response");
+        }
+
         setData(result.data);
         setPagination({
           ...pagination,
@@ -59,7 +62,6 @@ const ConfigurableGrid = ({ configId }) => {
         });
       } catch (err) {
         setError(`Error loading data: ${err.message}`);
-        console.error(err);
       } finally {
         setLoading(false);
       }
