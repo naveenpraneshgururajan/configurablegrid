@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import GridHeader from "./GridHeader";
 import GridCell from "./GridCell";
 import { getConfiguration, getGridData } from "../services/api";
+import { getHeatmapColor } from "../utils/styleHelpers";
 import "./ConfigurableGrid.css";
 
 const ConfigurableGrid = ({ configId }) => {
@@ -92,6 +93,24 @@ const ConfigurableGrid = ({ configId }) => {
     setData(sortedData);
   };
 
+  const getRowStyle = (row, columns) => {
+    const ageColumn = columns.find((col) => col.field === "age");
+    if (
+      !ageColumn ||
+      !ageColumn.style ||
+      ageColumn.style.type !== "numberheatmap"
+    ) {
+      return {};
+    }
+
+    const value = row["age"];
+    const { min, max, invertColor } = ageColumn.style;
+
+    return {
+      backgroundColor: getHeatmapColor(value, min, max, invertColor),
+    };
+  };
+
   // Handle pagination
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= pagination.totalPages) {
@@ -135,7 +154,7 @@ const ConfigurableGrid = ({ configId }) => {
               </thead>
               <tbody>
                 {data.map((row) => (
-                  <tr key={row.id}>
+                  <tr key={row.id} style={getRowStyle(row, config.columns)}>
                     {config.columns.map((column) => (
                       <GridCell
                         key={`${row.id}-${column.field}`}
