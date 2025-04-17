@@ -19,13 +19,13 @@ app.add_middleware(
 grid_configurations = {
     "numberheatmap": {
         "id": "numberheatmap",
-        "title": "Sales Performance Heatmap",
+        "title": "Sales Revenue Profit Heatmap",
         "columns": [
-            {"field": "name", "header": "Product Name", "width": "25%"},
+            {"field": "name", "header": "Product", "width": "25%"},
             {"field": "category", "header": "Category", "width": "15%"},
             {
                 "field": "sales", 
-                "header": "Sales (Units)", 
+                "header": "Sales", 
                 "width": "15%",
                 "style": {
                     "type": "numberheatmap",
@@ -35,7 +35,7 @@ grid_configurations = {
             },
             {
                 "field": "revenue", 
-                "header": "Revenue ($)", 
+                "header": "Revenue $", 
                 "width": "15%",
                 "style": {
                     "type": "numberheatmap",
@@ -45,7 +45,7 @@ grid_configurations = {
             },
             {
                 "field": "profit", 
-                "header": "Profit Margin (%)", 
+                "header": "Profit Margin %", 
                 "width": "15%",
                 "style": {
                     "type": "numberheatmap",
@@ -53,7 +53,7 @@ grid_configurations = {
                     "max": 100
                 }
             },
-            {"field": "lastUpdated", "header": "Last Updated", "width": "15%"}
+            # {"field": "lastUpdated", "header": "Last Updated", "width": "15%"}
         ]
     },
     "timestamp": {
@@ -66,7 +66,7 @@ grid_configurations = {
         {"field": "priority", "header": "Priority", "width": "15%"},
         {
             "field": "age", 
-            "header": "Age (Days)", 
+            "header": "Number of Days", 
             "width": "15%",
             "style": {
                 "type": "numberheatmap",
@@ -80,7 +80,7 @@ grid_configurations = {
 },
     "rangeheatmap": {
         "id": "rangeheatmap",
-        "title": "Server Performance Dashboard",
+        "title": "System Performance Dashboard",
         "columns": [
             {"field": "server", "header": "Server Name", "width": "20%"},
             {"field": "location", "header": "Location", "width": "15%"},
@@ -111,7 +111,6 @@ grid_configurations = {
                 }
             },
             {"field": "status", "header": "Status", "width": "15%"},
-            {"field": "lastChecked", "header": "Last Checked", "width": "20%"}
         ],
         "cellStyles": [
             {
@@ -174,44 +173,42 @@ def generate_salesnumber_data(count: int = 20):
         product = random.choice(products)
         category = random.choice(categories)
         sales = random.randint(50, 1000)
-        price = random.randint(10, 500)
+        price = random.randint(10, 150)
         revenue = sales * price
         profit = random.randint(5, 100)
-        
-        last_updated = (datetime.now() - timedelta(days=random.randint(0, 30))).strftime("%Y-%m-%d %H:%M:%S")
+        # last_updated = (datetime.now() - timedelta(days=random.randint(0, 30))).strftime("%Y-%m-%d %H:%M:%S")
         
         data.append({
             "id": i + 1,
-            "name": f"{product} {i+1}",
+            "name": f"{product}-{i+1}",
             "category": category,
             "sales": sales,
             "revenue": revenue,
             "profit": profit,
-            "lastUpdated": last_updated
         })
     
     return data
 
 def generate_serverrange_data(count: int = 20):
-    locations = ["US-East", "US-West", "EU-Central", "Asia-Pacific", "South America"]
+    locations = ["USA", "UK", "India", "Australia", "France","Sri Lanka","Singapore"]
     statuses = ["online", "warning", "offline"]
     status_weights = [0.7, 0.2, 0.1]
     
     data = []
     for i in range(count):
-        cpu = random.randint(10, 100)
-        memory = random.randint(10, 100)
+        cpu = random.randint(10, 99)
+        memory = random.randint(10, 99)
         status = random.choices(statuses, status_weights)[0]
-        last_checked = (datetime.now() - timedelta(minutes=random.randint(1, 120))).strftime("%Y-%m-%d %H:%M:%S")
+        # last_checked = (datetime.now() - timedelta(minutes=random.randint(1, 120))).strftime("%Y-%m-%d %H:%M:%S")
         
         data.append({
             "id": i + 1,
-            "server": f"srv-{random.randint(1000, 9999)}",
+            "server": f"server-{random.randint(1000, 9999)}",
             "location": random.choice(locations),
             "cpu": cpu,
             "memory": memory,
             "status": status,
-            "lastChecked": last_checked
+            # "lastChecked": last_checked
         })
     
     return data

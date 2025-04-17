@@ -99,80 +99,6 @@ const ConfigurableGrid = ({ configId }) => {
     }
   };
 
-  // Calculate row styles based on configuration
-  const getRowStyle = (row) => {
-    if (!config || !config.rowStyles) return {};
-
-    for (const rowStyle of config.rowStyles) {
-      if (evaluateRowCondition(row, rowStyle.condition)) {
-        return rowStyle.style;
-      }
-    }
-
-    return {};
-  };
-
-  // Evaluate row condition (including timestamp conditions)
-  const evaluateRowCondition = (row, condition) => {
-    if (!condition) return true;
-
-    // Handle timestamp conditions
-    if (condition.type === "timestamp") {
-      const fieldValue = new Date(row[condition.field]);
-      const now = new Date();
-
-      let comparisonValue;
-      switch (condition.value) {
-        case "1day":
-          comparisonValue = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-          break;
-        case "7days":
-          comparisonValue = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-          break;
-        case "30days":
-          comparisonValue = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-          break;
-        default:
-          comparisonValue = new Date(condition.value);
-      }
-
-      switch (condition.operator) {
-        case "<":
-          if (!(fieldValue > comparisonValue)) return false;
-          break;
-        case "<=":
-          if (!(fieldValue >= comparisonValue)) return false;
-          break;
-        case ">":
-          if (!(fieldValue < comparisonValue)) return false;
-          break;
-        case ">=":
-          if (!(fieldValue <= comparisonValue)) return false;
-          break;
-        case "=":
-          if (!(fieldValue.getTime() === comparisonValue.getTime()))
-            return false;
-          break;
-        default:
-          return false;
-      }
-
-      // Check the 'and' condition if it exists
-      if (condition.and) {
-        return evaluateRowCondition(row, {
-          ...condition.and,
-          type: "timestamp",
-        });
-      }
-
-      return true;
-    }
-
-    // Add other condition types here if needed
-
-    return false;
-  };
-
   if (loading && !config) {
     return <div className="grid-loading">Loading configuration...</div>;
   }
@@ -209,7 +135,7 @@ const ConfigurableGrid = ({ configId }) => {
               </thead>
               <tbody>
                 {data.map((row) => (
-                  <tr key={row.id} style={getRowStyle(row)}>
+                  <tr key={row.id}>
                     {config.columns.map((column) => (
                       <GridCell
                         key={`${row.id}-${column.field}`}
