@@ -57,6 +57,9 @@ cd backend
 # Install dependencies
 pip install -r requirements.txt
 
+# For Mac, run using pip3 command
+pip3 install -r requirements.txt
+
 # Start the FastAPI server
 uvicorn main:app --reload
 ```
