@@ -19,17 +19,27 @@ describe("NumberHeatGenerator Component", () => {
 
   it("renders the description text", () => {
     expect(
-      screen.getByText(/demonstrates how to color cells as a heatmap/i)
+      screen.getByText(
+        /This example shows how you can turn numbers into visual coloured/i
+      )
     ).toBeInTheDocument();
   });
 
   it("renders the features list", () => {
     expect(screen.getByText(/Features demonstrated:/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Column-specific heatmap styling/i)
+      screen.getByText(/Each column has its own heatmap styling/i)
     ).toBeInTheDocument();
-    expect(screen.getByText(/Color interpolation/i)).toBeInTheDocument();
-    expect(screen.getByText(/Automatic value formatting/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Colors smoothly shift from minimum to maximum based on the values values/i
+      )
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Colour more towards Green indicate good performance, colour more towards red indicate, didnt meet the expected value/i
+      )
+    ).toBeInTheDocument();
   });
 
   it("renders the example config block", () => {
@@ -37,7 +47,7 @@ describe("NumberHeatGenerator Component", () => {
       screen.getByText(/Example of How Config is returned from the API:/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/"title": "Sales Performance Heatmap"/)
+      screen.getByText(/"title": "Sales Revenew Profit Heatmap"/)
     ).toBeInTheDocument();
   });
 });

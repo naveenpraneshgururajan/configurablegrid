@@ -91,7 +91,7 @@ export const timeHeatmapLabels = {
   exampleTitle: "Example of How Config is returned from the API:",
   responseFormat: ` {
   "id": "timestamp",
-  "title": "Activity Timeline",
+  "title": "Project Activity Timeline",
   "columns": [
     { "field": "task", "header": "Task", "width": "25%" },
     { "field": "status", "header": "Status", "width": "15%" },

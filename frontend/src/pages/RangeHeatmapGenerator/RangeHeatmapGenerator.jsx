@@ -11,8 +11,8 @@ const RangeHeatmapGenerator = () => {
       <div className="example-features">
         <h3>{rangeHeatmapLabels.featuresTitle}</h3>
         <ul>
-          {rangeHeatmapLabels.featuresListItems.map((data) => {
-            return <li>{data}</li>;
+          {rangeHeatmapLabels.featuresListItems.map((data, index) => {
+            return <li key={index}>{data}</li>;
           })}
         </ul>
       </div>

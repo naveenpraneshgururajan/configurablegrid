@@ -19,20 +19,28 @@ describe("TimeHeatMapGenerator Component", () => {
 
   it("renders the description text", () => {
     expect(
-      screen.getByText(/This example shows a simplified approach to coloring/i)
+      screen.getByText(
+        /This example uses color to show how recent each row is/i
+      )
     ).toBeInTheDocument();
   });
 
   it("renders the features list", () => {
     expect(screen.getByText(/Features demonstrated:/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Time-based gradient coloring using age of items/i)
+      screen.getByText(
+        /Rows are colored based on how recent they are, using a green-to-red gradient/i
+      )
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Simple linear scale for time values/i)
+      screen.getByText(
+        /A simple timeline helps visually rank items from newest to oldest/i
+      )
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Automatic calculation of "freshness" for timestamps/i)
+      screen.getByText(
+        /The age of each item is calculated automatically using its timestamp/i
+      )
     ).toBeInTheDocument();
   });
 
@@ -41,7 +49,7 @@ describe("TimeHeatMapGenerator Component", () => {
       screen.getByText(/Example of How Config is returned from the API:/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/"title": "Activity Timeline"/)
+      screen.getByText(/"title": "Project Activity Timeline"/)
     ).toBeInTheDocument();
   });
 });

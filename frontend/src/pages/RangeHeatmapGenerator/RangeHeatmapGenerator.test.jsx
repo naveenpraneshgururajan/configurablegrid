@@ -20,7 +20,7 @@ describe("angeHeatmapGenerator Component", () => {
   it("renders the description text", () => {
     expect(
       screen.getByText(
-        /This example demonstrates how to apply different styles/i
+        /This example shows how you can visually style cells based on /i
       )
     ).toBeInTheDocument();
   });
@@ -28,13 +28,19 @@ describe("angeHeatmapGenerator Component", () => {
   it("renders the features list", () => {
     expect(screen.getByText(/Features demonstrated:/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Range-based styling for numeric values/i)
+      screen.getByText(
+        /Each column is styled differently based on what it shows/i
+      )
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Value-based cell styling for categorical data/i)
+      screen.getByText(
+        /Colors gradually shift from low to high values to help spot trends easily/i
+      )
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Combined styling techniques in a single grid/i)
+      screen.getByText(
+        /Greener shades mean better performance, while red tones highlight areas that may need attention/i
+      )
     ).toBeInTheDocument();
   });
 
@@ -43,7 +49,7 @@ describe("angeHeatmapGenerator Component", () => {
       screen.getByText(/Example of How Config is returned from the API:/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/"title": "Server Performance Dashboard"/)
+      screen.getByText(/"title": "System Performance Dashboard"/)
     ).toBeInTheDocument();
   });
 });

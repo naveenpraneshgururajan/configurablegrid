@@ -11,8 +11,8 @@ const TimeHeatMapGenerator = () => {
       <div className="example-features">
         <h3>{timeHeatmapLabels.featuresTitle}</h3>
         <ul>
-          {timeHeatmapLabels.featuresListItems.map((data) => {
-            return <li>{data}</li>;
+          {timeHeatmapLabels.featuresListItems.map((data, index) => {
+            return <li key={index}>{data}</li>;
           })}
         </ul>
       </div>
