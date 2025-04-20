@@ -1,24 +1,6 @@
 const API_BASE_URL = "http://localhost:8000/api";
 
 /**
- * Fetch a specific grid configuration
- * @param {string} configId - Configuration ID
- * @returns {Promise} - Resolves to configuration object
- */
-export const getConfiguration = async (configId) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/configurations/${configId}`);
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching configuration:", error);
-    throw error;
-  }
-};
-
-/**
  * Fetch all grid configurations
  * @returns {Promise} - Resolves to array of configuration objects
  */
@@ -60,6 +42,24 @@ export const updateConfiguration = async (configId, updates) => {
     return await response.json();
   } catch (error) {
     console.error("Error updating configuration:", error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch a specific grid configuration
+ * @param {string} configId - Configuration ID
+ * @returns {Promise} - Resolves to configuration object
+ */
+export const getConfiguration = async (configId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/configurations/${configId}`);
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching configuration:", error);
     throw error;
   }
 };

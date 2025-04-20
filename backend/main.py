@@ -3,8 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from datetime import datetime, timedelta
 import random
-from pydantic import BaseModel
-from typing import Dict, Any, List, Optional
 
 app = FastAPI(title="Config API")
 
@@ -76,7 +74,7 @@ default_grid_configurations = {
                     "invertColor": 'true'  # This makes newer items green and older items red
                 }
             },
-            {"field": "timestamp", "header": "Last Updated", "width": "15%"}
+            # {"field": "timestamp", "header": "Last Updated", "width": "15%"}
         ]
     },
     "rangeheatmap": {
@@ -129,13 +127,6 @@ default_grid_configurations = {
 # Store current configurations (start with defaults)
 grid_configurations = default_grid_configurations.copy()
 
-# Model for configuration updates
-class HeatmapConfigUpdate(BaseModel):
-    field: str
-    min: Optional[float] = None
-    max: Optional[float] = None
-    ranges: Optional[List[Dict[str, Any]]] = None
-
 def generate_simpletimestamp_data(count: int = 20):
     statuses = ["Completed", "In Progress", "Not Started", "Delayed"]
     owners = ["John", "Sarah", "Mike", "Emily", "David"]
@@ -147,13 +138,13 @@ def generate_simpletimestamp_data(count: int = 20):
     ]
     
     data = []
-    now = datetime.now()
+    # now = datetime.now()
     
     for i in range(count):
         # Generate a random age between 0 and 30 days
         days_ago = random.uniform(0, 30)
-        timestamp_date = now - timedelta(days=days_ago)
-        timestamp = timestamp_date.strftime("%Y-%m-%d %H:%M:%S")
+        # timestamp_date = now - timedelta(days=days_ago)
+        # timestamp = timestamp_date.strftime("%Y-%m-%d %H:%M:%S")
         
         # Round to 1 decimal place for display
         age_days = round(days_ago, 1)
@@ -165,7 +156,7 @@ def generate_simpletimestamp_data(count: int = 20):
             "owner": random.choice(owners),
             "priority": random.choice(priorities),
             "age": age_days,
-            "timestamp": timestamp
+            # "timestamp": timestamp
         })
     
     return data
@@ -222,17 +213,19 @@ def generate_serverrange_data(count: int = 20):
     return data
 
 # API endpoints
-@app.get("/")
-def read_root():
-    return {"message": "Configurable Grid API is running"}
-
 @app.get("/api/configurations")
 def get_all_configurations():
     """Get all available configurations"""
     return {"configurations": list(grid_configurations.values())}
 
+@app.get("/api/configurations/{config_id}")
+def get_configuration(config_id: str):
+    if config_id not in grid_configurations:
+        raise HTTPException(status_code=404, detail="Configuration not found")
+    return grid_configurations[config_id]
+
 @app.post("/api/configurations/{config_id}/update")
-def update_configuration(config_id: str, updates: List[HeatmapConfigUpdate] = Body(...)):
+def update_configuration(config_id: str, updates = Body(...)):
     """Update specific fields in a configuration"""
     if config_id not in grid_configurations:
         raise HTTPException(status_code=404, detail="Configuration not found")
