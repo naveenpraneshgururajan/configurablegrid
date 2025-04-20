@@ -13,6 +13,53 @@ export const getConfiguration = async (configId) => {
     }
     return await response.json();
   } catch (error) {
+    console.error("Error fetching configuration:", error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch all grid configurations
+ * @returns {Promise} - Resolves to array of configuration objects
+ */
+export const getAllConfigurations = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/configurations`);
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching all configurations:", error);
+    throw error;
+  }
+};
+
+/**
+ * Update a grid configuration
+ * @param {string} configId - Configuration ID
+ * @param {Array} updates - Array of update objects
+ * @returns {Promise} - Resolves to updated configuration
+ */
+export const updateConfiguration = async (configId, updates) => {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/configurations/${configId}/update`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updates),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating configuration:", error);
     throw error;
   }
 };
@@ -36,6 +83,7 @@ export const getGridData = async (configId, page = 1, pageSize = 10) => {
     }
     return await response.json();
   } catch (error) {
+    console.error("Error fetching grid data:", error);
     throw error;
   }
 };

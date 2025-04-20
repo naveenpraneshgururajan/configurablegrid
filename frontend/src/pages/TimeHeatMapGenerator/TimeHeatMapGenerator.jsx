@@ -1,4 +1,3 @@
-// src/examples/SimplifiedTimeHeatMapGenerator.jsx
 import React from "react";
 import ConfigurableGrid from "../../components/ConfigurableGrid";
 import { timeHeatmapLabels } from "../../constant/label";

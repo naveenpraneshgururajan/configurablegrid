@@ -1,8 +1,10 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from datetime import datetime, timedelta
 import random
+from pydantic import BaseModel
+from typing import Dict, Any, List, Optional
 
 app = FastAPI(title="Config API")
 
@@ -16,7 +18,7 @@ app.add_middleware(
 )
 
 # Sample grid configurations
-grid_configurations = {
+default_grid_configurations = {
     "numberheatmap": {
         "id": "numberheatmap",
         "title": "Sales Revenue Profit Heatmap",
@@ -53,31 +55,30 @@ grid_configurations = {
                     "max": 100
                 }
             },
-            # {"field": "lastUpdated", "header": "Last Updated", "width": "15%"}
         ]
     },
     "timestamp": {
-    "id": "timestamp",
-    "title": "Activity Timeline",
-    "columns": [
-        {"field": "task", "header": "Task", "width": "25%"},
-        {"field": "status", "header": "Status", "width": "15%"},
-        {"field": "owner", "header": "Owner", "width": "15%"},
-        {"field": "priority", "header": "Priority", "width": "15%"},
-        {
-            "field": "age", 
-            "header": "Number of Days", 
-            "width": "15%",
-            "style": {
-                "type": "numberheatmap",
-                "min": 0,
-                "max": 30,
-                "invertColor": 'true'  # This makes newer items green and older items red
-            }
-        },
-        {"field": "timestamp", "header": "Last Updated", "width": "15%"}
-    ]
-},
+        "id": "timestamp",
+        "title": "Activity Timeline",
+        "columns": [
+            {"field": "task", "header": "Task", "width": "25%"},
+            {"field": "status", "header": "Status", "width": "15%"},
+            {"field": "owner", "header": "Owner", "width": "15%"},
+            {"field": "priority", "header": "Priority", "width": "15%"},
+            {
+                "field": "age", 
+                "header": "Number of Days", 
+                "width": "15%",
+                "style": {
+                    "type": "numberheatmap",
+                    "min": 0,
+                    "max": 30,
+                    "invertColor": 'true'  # This makes newer items green and older items red
+                }
+            },
+            {"field": "timestamp", "header": "Last Updated", "width": "15%"}
+        ]
+    },
     "rangeheatmap": {
         "id": "rangeheatmap",
         "title": "System Performance Dashboard",
@@ -91,7 +92,7 @@ grid_configurations = {
                 "style": {
                     "type": "rangeheatmap",
                     "ranges": [
-                        {"min": 0, "max": 60, "style": {"color": "#008000"}},
+                        {"min": 0, "max": 59, "style": {"color": "#008000"}},
                         {"min": 60, "max": 85, "style": {"color": "#FFA500"}},
                         {"min": 85, "max": 100, "style": {"color": "#FF0000", "fontWeight": "bold"}}
                     ]
@@ -104,7 +105,7 @@ grid_configurations = {
                 "style": {
                     "type": "rangeheatmap",
                     "ranges": [
-                        {"min": 0, "max": 60, "style": {"color": "#008000"}},
+                        {"min": 0, "max": 59, "style": {"color": "#008000"}},
                         {"min": 60, "max": 85, "style": {"color": "#FFA500"}},
                         {"min": 85, "max": 100, "style": {"color": "#FF0000", "fontWeight": "bold"}}
                     ]
@@ -124,6 +125,16 @@ grid_configurations = {
         ]
     }
 }
+
+# Store current configurations (start with defaults)
+grid_configurations = default_grid_configurations.copy()
+
+# Model for configuration updates
+class HeatmapConfigUpdate(BaseModel):
+    field: str
+    min: Optional[float] = None
+    max: Optional[float] = None
+    ranges: Optional[List[Dict[str, Any]]] = None
 
 def generate_simpletimestamp_data(count: int = 20):
     statuses = ["Completed", "In Progress", "Not Started", "Delayed"]
@@ -176,7 +187,6 @@ def generate_salesnumber_data(count: int = 20):
         price = random.randint(10, 150)
         revenue = sales * price
         profit = random.randint(5, 100)
-        # last_updated = (datetime.now() - timedelta(days=random.randint(0, 30))).strftime("%Y-%m-%d %H:%M:%S")
         
         data.append({
             "id": i + 1,
@@ -199,7 +209,6 @@ def generate_serverrange_data(count: int = 20):
         cpu = random.randint(10, 99)
         memory = random.randint(10, 99)
         status = random.choices(statuses, status_weights)[0]
-        # last_checked = (datetime.now() - timedelta(minutes=random.randint(1, 120))).strftime("%Y-%m-%d %H:%M:%S")
         
         data.append({
             "id": i + 1,
@@ -208,7 +217,6 @@ def generate_serverrange_data(count: int = 20):
             "cpu": cpu,
             "memory": memory,
             "status": status,
-            # "lastChecked": last_checked
         })
     
     return data
@@ -218,15 +226,35 @@ def generate_serverrange_data(count: int = 20):
 def read_root():
     return {"message": "Configurable Grid API is running"}
 
-# @app.get("/api/configurations")
-# def get_configurations():
-#     return {"configurations": list(grid_configurations.values())}
+@app.get("/api/configurations")
+def get_all_configurations():
+    """Get all available configurations"""
+    return {"configurations": list(grid_configurations.values())}
 
-@app.get("/api/configurations/{config_id}")
-def get_configuration(config_id: str):
+@app.post("/api/configurations/{config_id}/update")
+def update_configuration(config_id: str, updates: List[HeatmapConfigUpdate] = Body(...)):
+    """Update specific fields in a configuration"""
     if config_id not in grid_configurations:
         raise HTTPException(status_code=404, detail="Configuration not found")
-    return grid_configurations[config_id]
+    
+    config = grid_configurations[config_id]
+    
+    for update in updates:
+        # Find the column with the matching field
+        for column in config["columns"]:
+            if column["field"] == update.field and "style" in column:
+                style = column["style"]
+                
+                # Update numberheatmap style
+                if style["type"] == "numberheatmap" and update.min is not None and update.max is not None:
+                    style["min"] = update.min
+                    style["max"] = update.max
+                
+                # Update rangeheatmap style
+                elif style["type"] == "rangeheatmap" and update.ranges:
+                    style["ranges"] = update.ranges
+    
+    return {"message": f"Configuration {config_id} has been updated", "configuration": config}
 
 @app.get("/api/data/{config_id}")
 def get_data(config_id: str, page: int = 1, page_size: int = 10):
@@ -243,7 +271,7 @@ def get_data(config_id: str, page: int = 1, page_size: int = 10):
     else:
         all_data = []
     
-    # # Apply pagination
+    # Apply pagination
     start_idx = (page - 1) * page_size
     end_idx = start_idx + page_size
     paginated_data = all_data[start_idx:end_idx]
@@ -257,4 +285,4 @@ def get_data(config_id: str, page: int = 1, page_size: int = 10):
     }
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

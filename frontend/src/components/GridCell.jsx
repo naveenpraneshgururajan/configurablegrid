@@ -1,4 +1,3 @@
-// src/components/GridCell.jsx
 import React from "react";
 import {
   getHeatmapColor,
