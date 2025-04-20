@@ -235,17 +235,17 @@ def update_configuration(config_id: str, updates = Body(...)):
     for update in updates:
         # Find the column with the matching field
         for column in config["columns"]:
-            if column["field"] == update.field and "style" in column:
+            if column["field"] == update["field"] and "style" in column:
                 style = column["style"]
                 
                 # Update numberheatmap style
-                if style["type"] == "numberheatmap" and update.min is not None and update.max is not None:
-                    style["min"] = update.min
-                    style["max"] = update.max
+                if style["type"] == "numberheatmap"  and update.get("min") is not None and update.get("max") is not None:
+                    style["min"] = update["min"]
+                    style["max"] = update["max"]
                 
                 # Update rangeheatmap style
-                elif style["type"] == "rangeheatmap" and update.ranges:
-                    style["ranges"] = update.ranges
+                elif style["type"] == "rangeheatmap" and update.get("ranges"):
+                    style["ranges"] = update["ranges"]
     
     return {"message": f"Configuration {config_id} has been updated", "configuration": config}
 
