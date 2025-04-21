@@ -4,8 +4,6 @@ export const routes = {
   timeHeatmap: "/timeheatmap",
   rangeHeatmap: "/rangeheatmap",
 };
-
-// Route mapping for navigation and active states
 export const navRoutes = [
   {
     path: routes.home,

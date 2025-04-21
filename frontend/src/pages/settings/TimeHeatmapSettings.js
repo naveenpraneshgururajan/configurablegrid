@@ -42,19 +42,6 @@ const TimeHeatmapSettings = ({ configuration, onChange }) => {
             InputLabelProps={{ shrink: true }}
             onChange={onChange}
           />
-          <FormControl fullWidth margin="normal">
-            <InputLabel id="invert-color-label">Invert Colors</InputLabel>
-            <Select
-              labelId="invert-color-label"
-              id="invert-color"
-              defaultValue={ageColumn?.style?.invertColor || "true"}
-              label="Invert Colors"
-              onChange={onChange}
-            >
-              <MenuItem value="true">Yes (Newer is Green)</MenuItem>
-              <MenuItem value="false">No (Older is Green)</MenuItem>
-            </Select>
-          </FormControl>
         </Paper>
       </Grid>
     </Grid>

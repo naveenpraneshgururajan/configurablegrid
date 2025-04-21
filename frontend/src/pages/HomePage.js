@@ -11,12 +11,7 @@ import NumbersIcon from "@mui/icons-material/Numbers";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import BarChartIcon from "@mui/icons-material/BarChart";
 
-const HomePage = ({
-  configurations,
-  loading,
-  updateConfiguration,
-  setCurrentHeatmapType,
-}) => {
+const HomePage = ({ configurations, loading, updateConfiguration }) => {
   const [activeTab, setActiveTab] = useState("number");
 
   // Refs to store form values
@@ -36,7 +31,6 @@ const HomePage = ({
 
   const handleUpdateConfig = async () => {
     try {
-      // setLoading(true);
       let updates = [];
       let type = null;
       if (activeTab === "number") {
@@ -74,7 +68,7 @@ const HomePage = ({
           });
         }
       } else if (activeTab === "time") {
-        type = "timeheatmap";
+        type = "timestamp";
         // Time heatmap update
         const ageMinEl = document.querySelector("#age-min");
         const ageMaxEl = document.querySelector("#age-max");
@@ -197,30 +191,10 @@ const HomePage = ({
 
       if (updates.length > 0) {
         const result = await updateConfiguration(type, updates);
-
-        // Update our state with the new configuration
-        // if (result.configuration) {
-        //   setConfigurations((prev) => ({
-        //     ...prev,
-        //     [currentHeatmapType]: result.configuration,
-        //   }));
-        // }
-
-        // setSnackbar({
-        //   open: true,
-        //   message: "Settings updated successfully",
-        //   severity: "success",
-        // });
       }
     } catch (error) {
       console.error("Error updating configuration:", error);
-      // setSnackbar({
-      //   open: true,
-      //   message: "Failed to update settings",
-      //   severity: "error",
-      // });
     } finally {
-      // setLoading(false);
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider, CssBaseline } from "@mui/material";
@@ -46,40 +46,17 @@ function App() {
             />
             <Route
               path={routes.numberHeatmap}
-              element={
-                <NumberHeatGenerator
-                  configuration={configurations.numberheatmap}
-                  onSettingsUpdated={(newConfig) => {
-                    updateConfiguration("numberheatmap", newConfig);
-                  }}
-                />
-              }
+              element={<NumberHeatGenerator />}
             />
             <Route
               path={routes.timeHeatmap}
-              element={
-                <TimeHeatMapGenerator
-                  configuration={configurations.timestamp}
-                  onSettingsUpdated={(newConfig) => {
-                    updateConfiguration("timestamp", newConfig);
-                  }}
-                />
-              }
+              element={<TimeHeatMapGenerator />}
             />
             <Route
               path={routes.rangeHeatmap}
-              element={
-                <RangeHeatmapGenerator
-                  configuration={configurations.rangeheatmap}
-                  onSettingsUpdated={(newConfig) => {
-                    updateConfiguration("rangeheatmap", newConfig);
-                  }}
-                />
-              }
+              element={<RangeHeatmapGenerator />}
             />
           </Routes>
-
-          {/* Snackbar from useConfigurations hook */}
           {snackbar.component(handleCloseSnackbar)}
         </Layout>
       </Router>

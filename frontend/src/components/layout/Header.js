@@ -40,7 +40,7 @@ const Header = ({ darkMode, toggleDarkMode, currentHeatmapType }) => {
           component="div"
           sx={{ color: "primary.main", fontWeight: 600 }}
         >
-          HeatMap Generator Project
+          HeatMap Generator
         </Typography>
 
         {/* Theme Toggle */}
