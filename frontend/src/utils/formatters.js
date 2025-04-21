@@ -13,13 +13,9 @@ export const formatCellValue = (value, field) => {
     lowerField.includes("created") ||
     lowerField.includes("checked")
   ) {
-    try {
-      const date = new Date(value);
-      if (!isNaN(date)) {
-        return date.toLocaleString("en-GB");
-      }
-    } catch {
-      return value;
+    const date = new Date(value);
+    if (!isNaN(date)) {
+      return date.toLocaleString("en-GB");
     }
   }
 

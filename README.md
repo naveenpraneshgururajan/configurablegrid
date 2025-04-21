@@ -103,6 +103,15 @@ cd backend
 pytest
 ```
 
+### Frontend Coverage Tests
+
+```bash
+cd frontend
+npm run coverage
+
+#Displays the overall coverage for the application
+```
+
 ## Deployment
 
 ### Building for Production

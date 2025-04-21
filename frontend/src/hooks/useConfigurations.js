@@ -35,7 +35,6 @@ export const useConfigurations = () => {
           ),
         });
       } catch (error) {
-        console.error("Error fetching configurations:", error);
         setSnackbar({
           open: true,
           message: "Failed to load configurations",
@@ -115,7 +114,6 @@ export const useConfigurations = () => {
 
       return result;
     } catch (error) {
-      console.error("Error updating configuration:", error);
       setSnackbar({
         open: true,
         message:
@@ -162,7 +160,6 @@ export const useConfigurations = () => {
       });
       return response;
     } catch (error) {
-      console.error("Error refreshing configurations:", error);
       setSnackbar({
         open: true,
         message: "Failed to refresh configurations",
