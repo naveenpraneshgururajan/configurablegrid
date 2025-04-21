@@ -96,6 +96,15 @@ cd frontend
 npm test
 ```
 
+### Frontend Coverage Tests
+
+```bash
+cd frontend
+npm run coverage
+
+#Displays the overall coverage for the application
+```
+
 ### Backend Tests
 
 ```bash
@@ -107,15 +116,6 @@ pytest -v
 
 ```bash
 pytest test_main.py
-```
-
-### Frontend Coverage Tests
-
-```bash
-cd frontend
-npm run coverage
-
-#Displays the overall coverage for the application
 ```
 
 ## Deployment
