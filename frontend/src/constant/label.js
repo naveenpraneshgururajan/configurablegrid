@@ -95,7 +95,7 @@ export const timeHeatmapLabels = {
   "columns": [
     { "field": "task", "header": "Task", "width": "25%" },
     { "field": "status", "header": "Status", "width": "15%" },
-    { "field": "owner", "header": "Owner", "width": "15%" },
+    { "field": "owner", "header": "Asigne", "width": "15%" },
     { "field": "priority", "header": "Priority", "width": "15%" },
     { 
       "field": "age", 

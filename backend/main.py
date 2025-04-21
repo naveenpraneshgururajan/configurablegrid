@@ -19,7 +19,7 @@ app.add_middleware(
 default_grid_configurations = {
     "numberheatmap": {
         "id": "numberheatmap",
-        "title": "Sales Revenue Profit Heatmap",
+        "title": "Sales Revenue Profit Heatmap (Displays inidividual Cell Colour based on Min-Max values)",
         "columns": [
             {"field": "name", "header": "Product", "width": "25%"},
             {"field": "category", "header": "Category", "width": "15%"},
@@ -45,7 +45,7 @@ default_grid_configurations = {
             },
             {
                 "field": "profit", 
-                "header": "Profit Margin %", 
+                "header": "Profit %", 
                 "width": "15%",
                 "style": {
                     "type": "numberheatmap",
@@ -57,11 +57,11 @@ default_grid_configurations = {
     },
     "timestamp": {
         "id": "timestamp",
-        "title": "Activity Timeline",
+        "title": "Day based Heatmap ( Highlights the entier row based on Number of Days Column)",
         "columns": [
             {"field": "task", "header": "Task", "width": "25%"},
             {"field": "status", "header": "Status", "width": "15%"},
-            {"field": "owner", "header": "Owner", "width": "15%"},
+            {"field": "owner", "header": "Asigne", "width": "15%"},
             {"field": "priority", "header": "Priority", "width": "15%"},
             {
                 "field": "age", 
@@ -74,12 +74,11 @@ default_grid_configurations = {
                     "invertColor": 'true'  # This makes newer items green and older items red
                 }
             },
-            # {"field": "timestamp", "header": "Last Updated", "width": "15%"}
         ]
     },
     "rangeheatmap": {
         "id": "rangeheatmap",
-        "title": "System Performance Dashboard",
+        "title": "Performance Dashboard (Highlights elements based on their values)",
         "columns": [
             {"field": "server", "header": "Server Name", "width": "20%"},
             {"field": "location", "header": "Location", "width": "15%"},
@@ -91,7 +90,7 @@ default_grid_configurations = {
                     "type": "rangeheatmap",
                     "ranges": [
                         {"min": 0, "max": 59, "style": {"color": "#008000"}},
-                        {"min": 60, "max": 85, "style": {"color": "#FFA500"}},
+                        {"min": 60, "max": 84, "style": {"color": "#FFA500"}},
                         {"min": 85, "max": 100, "style": {"color": "#FF0000", "fontWeight": "bold"}}
                     ]
                 }
@@ -138,14 +137,11 @@ def generate_simpletimestamp_data(count: int = 20):
     ]
     
     data = []
-    # now = datetime.now()
+
     
     for i in range(count):
         # Generate a random age between 0 and 30 days
         days_ago = random.uniform(0, 30)
-        # timestamp_date = now - timedelta(days=days_ago)
-        # timestamp = timestamp_date.strftime("%Y-%m-%d %H:%M:%S")
-        
         # Round to 1 decimal place for display
         age_days = round(days_ago, 1)
         
@@ -156,7 +152,6 @@ def generate_simpletimestamp_data(count: int = 20):
             "owner": random.choice(owners),
             "priority": random.choice(priorities),
             "age": age_days,
-            # "timestamp": timestamp
         })
     
     return data

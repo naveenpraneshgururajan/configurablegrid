@@ -227,7 +227,7 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
           Heatmap Generator
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Generate customized heatmaps based on your specific data requirements.
+          Shows Different varieties how Heatmaps can be plotted
         </Typography>
       </Box>
 
@@ -245,7 +245,7 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         <Box sx={{ flex: 1, minWidth: { xs: "100%", md: "0" } }}>
           <HeatmapCard
             title="Number Heatmaps"
-            description="Visualize numeric data with customizable color gradients and intensity scales for clear data representation."
+            description="Displays Heatmap based on inidividual Cell values for Sales/Revenue and Profit Margins."
             icon={<NumbersIcon fontSize="medium" />}
             linkTo={routes.numberHeatmap}
           />
@@ -255,7 +255,7 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         <Box sx={{ flex: 1, minWidth: { xs: "100%", md: "0" } }}>
           <HeatmapCard
             title="Time Heatmaps"
-            description="Track temporal patterns with time-based visualization using color intensity for effective time trend analysis."
+            description="Utilises a single Cell value and highlights the entire row of data."
             icon={<AccessTimeIcon fontSize="medium" />}
             linkTo={routes.timeHeatmap}
           />
@@ -265,7 +265,7 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         <Box sx={{ flex: 1, minWidth: { xs: "100%", md: "0" } }}>
           <HeatmapCard
             title="Range Heatmaps"
-            description="Apply distinct styles to data ranges for clearer segment visualization and threshold-based analysis."
+            description="Highlights the inidividual test within the Cells to differentiate the values."
             icon={<BarChartIcon fontSize="medium" />}
             linkTo={routes.rangeHeatmap}
           />
