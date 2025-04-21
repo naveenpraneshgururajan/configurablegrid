@@ -12,7 +12,6 @@ export const getAllConfigurations = async () => {
     }
     return await response.json();
   } catch (error) {
-    console.error("Error fetching all configurations:", error);
     throw error;
   }
 };
@@ -41,7 +40,6 @@ export const updateConfiguration = async (configId, updates) => {
     }
     return await response.json();
   } catch (error) {
-    console.error("Error updating configuration:", error);
     throw error;
   }
 };
@@ -59,7 +57,6 @@ export const getConfiguration = async (configId) => {
     }
     return await response.json();
   } catch (error) {
-    console.error("Error fetching configuration:", error);
     throw error;
   }
 };
@@ -83,7 +80,6 @@ export const getGridData = async (configId, page = 1, pageSize = 10) => {
     }
     return await response.json();
   } catch (error) {
-    console.error("Error fetching grid data:", error);
     throw error;
   }
 };
