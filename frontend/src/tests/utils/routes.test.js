@@ -1,4 +1,4 @@
-import { routes, navRoutes } from "./routes";
+import { routes, navRoutes } from "../../../src/utils/routes";
 
 describe("routes", () => {
   test("routes object contains all necessary routes", () => {

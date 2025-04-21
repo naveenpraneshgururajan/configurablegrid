@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react";
-import useTheme from "./theme";
+import useTheme from "../../utils/theme";
 
 describe("useTheme hook", () => {
   test("should initialize with darkMode as false", () => {

@@ -2,10 +2,10 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
-import Layout from "./Layout";
+import Layout from "../../../../src/components/layout/Layout";
 
 // Mock the Header and Footer components
-jest.mock("./Header", () => {
+jest.mock("../../../../src/components/layout/Header", () => {
   return function MockHeader(props) {
     return (
       <div
@@ -19,7 +19,7 @@ jest.mock("./Header", () => {
   };
 });
 
-jest.mock("./Footer", () => {
+jest.mock("../../../../src/components/layout/Footer", () => {
   return function MockFooter() {
     return <div data-testid="footer">Footer</div>;
   };

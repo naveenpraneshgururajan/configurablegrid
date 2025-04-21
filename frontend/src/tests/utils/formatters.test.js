@@ -1,4 +1,4 @@
-import { formatCellValue } from "../utils/formatters";
+import { formatCellValue } from "../../../src/utils/formatters";
 
 describe("formatCellValue", () => {
   it("returns em dash for null or undefined", () => {

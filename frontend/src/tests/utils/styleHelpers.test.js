@@ -2,7 +2,7 @@ import {
   getHeatmapColor,
   getRangeStyle,
   getCellValueStyle,
-} from "../utils/styleHelpers";
+} from "../../../src/utils/styleHelpers";
 
 describe("getHeatmapColor", () => {
   it("returns green (hsl(120, 100%, 50%)) for min value", () => {

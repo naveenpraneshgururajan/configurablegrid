@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import RangeHeatmapSettings from "./RangeHeatmapSettings";
+import RangeHeatmapSettings from "../../../../src/pages/SettingsPage/RangeHeatmapSettings";
 
 describe("RangeHeatmapSettings", () => {
   const mockConfiguration = {

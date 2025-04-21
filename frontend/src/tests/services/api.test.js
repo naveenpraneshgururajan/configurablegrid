@@ -4,7 +4,7 @@ import {
   getConfiguration,
   updateConfiguration,
   getGridData,
-} from "../services/api";
+} from "../../../src/services/api";
 
 global.fetch = jest.fn();
 

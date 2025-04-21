@@ -50,9 +50,16 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
+      "!src/tests/**",
       "!src/**/*.d.ts",
       "!src/index.js",
       "!src/reportWebVitals.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/tests/**/*.test.{js,jsx,ts,tsx}",
+      "<rootDir>/src/tests/**/*.spec.{js,jsx,ts,tsx}",
+      "<rootDir>/src/tests/**/*Test.{js,jsx,ts,tsx}",
+      "<rootDir>/src/tests/**/*.{js,jsx,ts,tsx}"
     ],
     "coverageThreshold": {
       "global": {

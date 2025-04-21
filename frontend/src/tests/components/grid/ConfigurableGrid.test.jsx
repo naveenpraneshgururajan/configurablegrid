@@ -6,11 +6,11 @@ import {
   fireEvent,
   act,
 } from "@testing-library/react";
-import ConfigurableGrid from "../grid/ConfigurableGrid";
-import { getConfiguration, getGridData } from "../../services/api";
+import ConfigurableGrid from "../../../../src/components/grid/ConfigurableGrid";
+import { getConfiguration, getGridData } from "../../../../src/services/api";
 
 // Mock the API services
-jest.mock("../../services/api");
+jest.mock("../../../services/api");
 
 describe("ConfigurableGrid", () => {
   const mockConfig = {

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import NavLink from "./NavLink";
+import NavLink from "../../../../src/components/nav/NavLink";
 import HomeIcon from "@mui/icons-material/Home";
 
 // Mock Material UI Button component

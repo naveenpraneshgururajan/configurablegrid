@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import GridHeader from "../grid/GridHeader";
+import GridHeader from "../../../../src/components/grid/GridHeader";
 
 describe("GridHeader", () => {
   const mockColumn = {

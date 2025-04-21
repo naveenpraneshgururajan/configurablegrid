@@ -2,11 +2,11 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
-import Header from "./Header";
-import { navRoutes } from "../../utils/routes";
+import Header from "../../../../src/components/layout/Header";
+import { navRoutes } from "../../../../src/utils/routes";
 
 // Mock the NavLink component since it uses React Router
-jest.mock("../nav/NavLink", () => {
+jest.mock("../../../../src/components/nav/NavLink", () => {
   return ({ children, to, isActive }) => (
     <a
       href={to}

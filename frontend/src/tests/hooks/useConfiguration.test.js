@@ -1,10 +1,10 @@
 // useConfigurations.test.js
 import { renderHook, act } from "@testing-library/react";
-import { useConfigurations } from "../hooks/useConfigurations";
-import * as apiService from "../services/api";
+import { useConfigurations } from "../../../src/hooks/useConfigurations";
+import * as apiService from "../../../src/services/api";
 
 // Mock the API service
-jest.mock("../services/api", () => ({
+jest.mock("../../../src/services/api", () => ({
   getAllConfigurations: jest.fn(),
   updateConfiguration: jest.fn(),
 }));

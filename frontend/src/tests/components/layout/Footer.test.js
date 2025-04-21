@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Footer from "./Footer";
+import Footer from "../../../../src/components/layout/Footer";
 
 describe("Footer component", () => {
   const theme = createTheme();

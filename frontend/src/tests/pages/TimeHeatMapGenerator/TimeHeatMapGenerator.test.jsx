@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import TimeHeatMapGenerator from "../TimeHeatMapGenerator/TimeHeatMapGenerator";
+import TimeHeatMapGenerator from "../../../../src/pages/TimeHeatMapGenerator/TimeHeatMapGenerator";
 
-jest.mock("../../components/grid/ConfigurableGrid", () => {
+jest.mock("../../../../src/components/grid/ConfigurableGrid", () => {
   return jest.fn((props) => {
     return <div data-testid="mock-grid" data-config-id={props.configId} />;
   });

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import TimeHeatmapSettings from "./TimeHeatmapSettings";
+import TimeHeatmapSettings from "../../../../src/pages/SettingsPage/TimeHeatmapSettings";
 
 describe("TimeHeatmapSettings", () => {
   const mockConfiguration = {

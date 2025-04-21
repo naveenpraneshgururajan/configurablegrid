@@ -1,5 +1,5 @@
 // Mock the routes
-jest.mock("./utils/routes", () => ({
+jest.mock("../utils/routes", () => ({
   routes: {
     home: "/",
     numberHeatmap: "/number-heatmap",
@@ -10,10 +10,10 @@ jest.mock("./utils/routes", () => ({
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import App from "./App";
+import App from "../../src/App";
 
 // Mock the required modules before importing the component
-jest.mock("./utils/theme", () => ({
+jest.mock("../utils/theme", () => ({
   useTheme: () => ({
     theme: {
       palette: { mode: "light" },
@@ -34,7 +34,7 @@ jest.mock("./utils/theme", () => ({
   }),
 }));
 
-jest.mock("./hooks/useConfigurations", () => ({
+jest.mock("../hooks/useConfigurations", () => ({
   useConfigurations: () => ({
     configurations: [{ id: "test1", name: "Test Config" }],
     loading: false,
@@ -68,7 +68,7 @@ jest.mock("@mui/material", () => ({
 }));
 
 // Mock the page components
-jest.mock("./components/layout/Layout", () => ({
+jest.mock("../components/layout/Layout", () => ({
   __esModule: true,
   default: ({ children, darkMode, toggleDarkMode, currentHeatmapType }) => (
     <div
@@ -81,7 +81,7 @@ jest.mock("./components/layout/Layout", () => ({
   ),
 }));
 
-jest.mock("./pages/Homepage/HomePage", () => ({
+jest.mock("../pages/Homepage/HomePage", () => ({
   __esModule: true,
   default: ({
     configurations,
@@ -99,21 +99,21 @@ jest.mock("./pages/Homepage/HomePage", () => ({
   ),
 }));
 
-jest.mock("./pages/NumberHeatGenerator/NumberHeatGenerator", () => ({
+jest.mock("../pages/NumberHeatGenerator/NumberHeatGenerator", () => ({
   __esModule: true,
   default: () => (
     <div data-testid="number-heat-generator">Number Heat Generator</div>
   ),
 }));
 
-jest.mock("./pages/TimeHeatMapGenerator/TimeHeatMapGenerator", () => ({
+jest.mock("../pages/TimeHeatMapGenerator/TimeHeatMapGenerator", () => ({
   __esModule: true,
   default: () => (
     <div data-testid="time-heat-map-generator">Time Heat Map Generator</div>
   ),
 }));
 
-jest.mock("./pages/RangeHeatmapGenerator/RangeHeatmapGenerator", () => ({
+jest.mock("../pages/RangeHeatmapGenerator/RangeHeatmapGenerator", () => ({
   __esModule: true,
   default: () => (
     <div data-testid="range-heatmap-generator">Range Heatmap Generator</div>
@@ -166,7 +166,7 @@ describe("App", () => {
 
   test("handles dark mode", () => {
     // Save original implementation
-    const originalModule = jest.requireMock("./utils/theme");
+    const originalModule = jest.requireMock("../utils/theme");
     const originalUseTheme = originalModule.useTheme;
 
     // Replace with dark mode version for this test
@@ -199,7 +199,7 @@ describe("App", () => {
 
   test("handles loading state", () => {
     // Save original implementation
-    const originalModule = jest.requireMock("./hooks/useConfigurations");
+    const originalModule = jest.requireMock("../hooks/useConfigurations");
     const originalUseConfigurations = originalModule.useConfigurations;
 
     // Replace with loading version for this test
