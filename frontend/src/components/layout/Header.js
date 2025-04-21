@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import NavLink from "../nav/NavLink";
 import { navRoutes } from "../../utils/routes";
+import { useLocation } from "react-router-dom";
 
 // Material UI Icons
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -32,6 +33,43 @@ const getIconForRoute = (routeId) => {
 };
 
 const Header = ({ darkMode, toggleDarkMode, currentHeatmapType }) => {
+  // Get current location to help determine active tab
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  // Helper function to determine if a route is active
+  const isRouteActive = (route) => {
+    // For heatmap-specific routes (non-home routes)
+    if (
+      route.id === "numberheatmap" ||
+      route.id === "timestamp" ||
+      route.id === "rangeheatmap"
+    ) {
+      // Is active if:
+      // 1. We're on this route's path, OR
+      // 2. The currentHeatmapType matches this route's ID
+      return currentPath === route.path || currentHeatmapType === route.id;
+    }
+
+    // For the home route
+    if (route.path === "/" || route.id === "home") {
+      // Home is active only when:
+      // 1. We're on the home path AND
+      // 2. No specific heatmap type is selected, OR "home" is the selected type
+      const noSpecificHeatmapSelected =
+        !currentHeatmapType ||
+        currentHeatmapType === "home" ||
+        (currentHeatmapType !== "numberheatmap" &&
+          currentHeatmapType !== "timestamp" &&
+          currentHeatmapType !== "rangeheatmap");
+
+      return currentPath === "/" && noSpecificHeatmapSelected;
+    }
+
+    // Default fallback (shouldn't normally be reached)
+    return false;
+  };
+
   return (
     <AppBar position="static" color="default" elevation={2}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -83,16 +121,21 @@ const Header = ({ darkMode, toggleDarkMode, currentHeatmapType }) => {
         </Box>
 
         <Box sx={{ display: "flex" }}>
-          {navRoutes.map((route) => (
-            <NavLink
-              key={route.path}
-              to={route.path}
-              icon={getIconForRoute(route.id)}
-              isActive={currentHeatmapType === route.id}
-            >
-              {route.label}
-            </NavLink>
-          ))}
+          {navRoutes.map((route) => {
+            // Determine if this route should be active
+            const active = isRouteActive(route);
+
+            return (
+              <NavLink
+                key={route.path}
+                to={route.path}
+                icon={getIconForRoute(route.id)}
+                isActive={active}
+              >
+                {route.label}
+              </NavLink>
+            );
+          })}
         </Box>
       </Toolbar>
     </AppBar>

@@ -104,7 +104,7 @@ default_grid_configurations = {
                     "type": "rangeheatmap",
                     "ranges": [
                         {"min": 0, "max": 59, "style": {"color": "#008000"}},
-                        {"min": 60, "max": 85, "style": {"color": "#FFA500"}},
+                        {"min": 60, "max": 84, "style": {"color": "#FFA500"}},
                         {"min": 85, "max": 100, "style": {"color": "#FF0000", "fontWeight": "bold"}}
                     ]
                 }
