@@ -4,7 +4,6 @@
   
   .grid-title {
     margin-bottom: 1rem;
-    color: #2c3e50;
   }
   
   .grid-table-container {
@@ -53,6 +52,7 @@
   .grid-table td {
     padding: 0.8rem;
     border-bottom: 1px solid #e9ecef;
+    color: #495057;
   }
   
   .grid-table tbody tr:last-child td {
