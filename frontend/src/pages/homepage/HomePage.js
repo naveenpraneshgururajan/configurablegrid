@@ -235,6 +235,8 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
     }
   };
 
+  console.log("inside homepage", loading);
+
   return (
     <Box>
       <Box sx={{ textAlign: "center", mb: 4 }}>
@@ -304,7 +306,9 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         </Tabs>
 
         {loading ? (
-          <Typography>{appLabels.loading}</Typography>
+          <Typography variant="body2" color="warning">
+            {appLabels.loading}
+          </Typography>
         ) : (
           <>
             {activeTab === "number" && (

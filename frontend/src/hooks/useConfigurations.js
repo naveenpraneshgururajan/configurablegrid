@@ -23,8 +23,9 @@ export const useConfigurations = () => {
   useEffect(() => {
     const fetchConfigurations = async () => {
       try {
-        setLoading(true);
+        console.log("inside try");
         const response = await getAllConfigurations();
+        setLoading(false);
         setConfigurations({
           numberheatmap: response.configurations.find(
             (c) => c.id === "numberheatmap"
@@ -35,13 +36,12 @@ export const useConfigurations = () => {
           ),
         });
       } catch (error) {
+        setLoading(true);
         setSnackbar({
           open: true,
           message: "Failed to load configurations",
           severity: "error",
         });
-      } finally {
-        setLoading(false);
       }
     };
 
