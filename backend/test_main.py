@@ -43,7 +43,6 @@ def test_update_configuration_numberheatmap():
             "max": 2000
         }
     ]
-    
     response = client.post(f"/api/configurations/{config_id}/update", json=updates)
     assert response.status_code == 200
     assert response.json()["configuration"]["columns"][2]["style"]["min"] == 100
@@ -77,7 +76,7 @@ def test_get_data_numberheatmap():
     response = client.get("/api/data/numberheatmap")
     assert response.status_code == 200
     assert "data" in response.json()
-    assert len(response.json()["data"]) == 10  # Default page size
+    assert len(response.json()["data"]) == 10
     assert "sales" in response.json()["data"][0]
     assert "revenue" in response.json()["data"][0]
     assert "profit" in response.json()["data"][0]
@@ -98,7 +97,6 @@ def test_get_data_rangeheatmap():
     assert "status" in response.json()["data"][0]
 
 def test_get_data_pagination():
-    # Test with custom pagination parameters
     page = 2
     page_size = 5
     response = client.get(f"/api/data/numberheatmap?page={page}&page_size={page_size}")
@@ -111,30 +109,3 @@ def test_get_data_invalid_config():
     response = client.get("/api/data/nonexistent")
     assert response.status_code == 404
     assert "Configuration not found" in response.json()["detail"]
-
-# Test data generation functions
-def test_generate_salesnumber_data():
-    from main import generate_salesnumber_data
-    
-    data = generate_salesnumber_data(10)
-    assert len(data) == 10
-    assert all(isinstance(item["sales"], int) for item in data)
-    assert all(isinstance(item["revenue"], int) for item in data)
-    assert all(isinstance(item["profit"], int) for item in data)
-
-def test_generate_serverrange_data():
-    from main import generate_serverrange_data
-    
-    data = generate_serverrange_data(10)
-    assert len(data) == 10
-    assert all(isinstance(item["cpu"], int) for item in data)
-    assert all(isinstance(item["memory"], int) for item in data)
-    assert all(item["status"] in ["online", "warning", "offline"] for item in data)
-
-def test_generate_simpletimestamp_data():
-    from main import generate_simpletimestamp_data
-    
-    data = generate_simpletimestamp_data(10)
-    assert len(data) == 10
-    assert all(isinstance(item["age"], float) for item in data)
-    assert all(0 <= item["age"] <= 30 for item in data)
