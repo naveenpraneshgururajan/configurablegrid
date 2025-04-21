@@ -100,7 +100,13 @@ npm test
 
 ```bash
 cd backend
-pytest
+pytest -v
+```
+
+#### Run specific test file:
+
+```bash
+pytest test_main.py
 ```
 
 ### Frontend Coverage Tests

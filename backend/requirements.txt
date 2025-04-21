@@ -1,3 +1,6 @@
 fastapi==0.103.1
 uvicorn==0.23.2
 python-dotenv==1.0.0
+# Testing dependencies
+pytest==7.4.2
+httpx==0.25.0  # Required for FastAPI TestClient
