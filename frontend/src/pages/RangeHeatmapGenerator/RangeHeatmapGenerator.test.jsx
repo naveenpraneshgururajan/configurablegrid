@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import RangeHeatmapGenerator from "../RangeHeatmapGenerator/RangeHeatmapGenerator";
 
-jest.mock("../../components/ConfigurableGrid", () => {
+jest.mock("../../components/grid/ConfigurableGrid", () => {
   return jest.fn((props) => {
     return <div data-testid="mock-grid" data-config-id={props.configId} />;
   });

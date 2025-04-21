@@ -1,5 +1,5 @@
 import React from "react";
-import ConfigurableGrid from "../../components/ConfigurableGrid";
+import ConfigurableGrid from "../../components/grid/ConfigurableGrid";
 import { timeHeatmapLabels } from "../../constant/label";
 
 const TimeHeatMapGenerator = () => {

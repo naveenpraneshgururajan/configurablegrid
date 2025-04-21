@@ -1,21 +1,21 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import GridCell from "../components/GridCell";
+import GridCell from "../grid/GridCell";
 import {
   getHeatmapColor,
   getRangeStyle,
   getCellValueStyle,
-} from "../utils/styleHelpers";
-import { formatCellValue } from "../utils/formatters";
+} from "../../utils/styleHelpers";
+import { formatCellValue } from "../../utils/formatters";
 
 // Mock the utility functions
-jest.mock("../utils/styleHelpers", () => ({
+jest.mock("../../utils/styleHelpers", () => ({
   getHeatmapColor: jest.fn(),
   getRangeStyle: jest.fn(),
   getCellValueStyle: jest.fn(),
 }));
 
-jest.mock("../utils/formatters", () => ({
+jest.mock("../../utils/formatters", () => ({
   formatCellValue: jest.fn((value) => value?.toString() || ""),
 }));
 

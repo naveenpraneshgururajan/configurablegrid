@@ -1,16 +1,16 @@
 import React, { useState, useRef } from "react";
 import { Box, Typography, Paper, Tabs, Tab, Button } from "@mui/material";
-import HeatmapCard from "../components/ui/HeatmapCard";
-import { routes } from "../utils/routes";
-import NumberHeatmapSettings from "./settings/NumberHeatmapSettings";
-import TimeHeatmapSettings from "./settings/TimeHeatmapSettings";
-import RangeHeatmapSettings from "./settings/RangeHeatmapSettings";
+import HeatmapCard from "../../components/ui/HeatmapCard";
+import { routes } from "../../utils/routes";
+import NumberHeatmapSettings from "../SettingsPage/NumberHeatmapSettings";
+import TimeHeatmapSettings from "../SettingsPage/TimeHeatmapSettings";
+import RangeHeatmapSettings from "../SettingsPage/RangeHeatmapSettings";
 
 // Material UI Icons
 import NumbersIcon from "@mui/icons-material/Numbers";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import { appLabels } from "../constant/label";
+import { appLabels } from "../../constant/label";
 
 const {
   title,

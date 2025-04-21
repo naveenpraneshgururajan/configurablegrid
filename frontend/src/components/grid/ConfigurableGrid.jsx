@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import GridHeader from "./GridHeader";
-import GridCell from "./GridCell";
-import { getConfiguration, getGridData } from "../services/api";
-import { getHeatmapColor } from "../utils/styleHelpers";
+import GridHeader from "../grid/GridHeader";
+import GridCell from "../grid/GridCell";
+import { getConfiguration, getGridData } from "../../services/api";
+import { getHeatmapColor } from "../../utils/styleHelpers";
 import "./ConfigurableGrid.css";
 
 const ConfigurableGrid = ({ configId }) => {

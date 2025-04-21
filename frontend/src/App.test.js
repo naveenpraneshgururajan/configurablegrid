@@ -81,7 +81,7 @@ jest.mock("./components/layout/Layout", () => ({
   ),
 }));
 
-jest.mock("./pages/HomePage", () => ({
+jest.mock("./pages/Homepage/HomePage", () => ({
   __esModule: true,
   default: ({
     configurations,

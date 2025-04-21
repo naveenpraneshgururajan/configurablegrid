@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 
 // Mock the components that HomePage uses
-jest.mock("../components/ui/HeatmapCard", () => {
+jest.mock("../../components/ui/HeatmapCard", () => {
   return function MockHeatmapCard({ title, description, linkTo }) {
     return (
       <div data-testid="heatmap-card">
@@ -16,19 +16,19 @@ jest.mock("../components/ui/HeatmapCard", () => {
   };
 });
 
-jest.mock("./settings/NumberHeatmapSettings", () => {
+jest.mock("../SettingsPage/NumberHeatmapSettings", () => {
   return function MockNumberSettings() {
     return <div data-testid="number-settings">Number Settings</div>;
   };
 });
 
-jest.mock("./settings/TimeHeatmapSettings", () => {
+jest.mock("../SettingsPage/TimeHeatmapSettings", () => {
   return function MockTimeSettings() {
     return <div data-testid="time-settings">Time Settings</div>;
   };
 });
 
-jest.mock("./settings/RangeHeatmapSettings", () => {
+jest.mock("../SettingsPage/RangeHeatmapSettings", () => {
   return function MockRangeSettings() {
     return <div data-testid="range-settings">Range Settings</div>;
   };
@@ -40,7 +40,7 @@ jest.mock("@mui/icons-material/AccessTime", () => () => "AccessTimeIcon");
 jest.mock("@mui/icons-material/BarChart", () => () => "BarChartIcon");
 
 // Mock routes
-jest.mock("../utils/routes", () => ({
+jest.mock("../../utils/routes", () => ({
   routes: {
     numberHeatmap: "/number-heatmap",
     timeHeatmap: "/time-heatmap",

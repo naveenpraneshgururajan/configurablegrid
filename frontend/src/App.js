@@ -4,7 +4,7 @@ import "./App.css";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { useTheme } from "./utils/theme";
 import Layout from "./components/layout/Layout";
-import HomePage from "./pages/HomePage";
+import HomePage from "../src/pages/homepage/HomePage";
 import NumberHeatGenerator from "./pages/NumberHeatGenerator/NumberHeatGenerator";
 import TimeHeatMapGenerator from "./pages/TimeHeatMapGenerator/TimeHeatMapGenerator";
 import RangeHeatmapGenerator from "./pages/RangeHeatmapGenerator/RangeHeatmapGenerator";
