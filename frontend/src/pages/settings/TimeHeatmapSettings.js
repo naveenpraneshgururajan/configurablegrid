@@ -1,14 +1,11 @@
 import React from "react";
-import {
-  Grid,
-  Paper,
-  Typography,
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
+import { Grid, Paper, Typography, TextField } from "@mui/material";
+import { appLabels } from "../../constant/label";
+const {
+  settingsTabItemsLabels: {
+    timeTab: { daysTitle },
+  },
+} = appLabels;
 
 const TimeHeatmapSettings = ({ configuration, onChange }) => {
   if (!configuration) return null;
@@ -20,7 +17,7 @@ const TimeHeatmapSettings = ({ configuration, onChange }) => {
       <Grid item xs={12} md={6}>
         <Paper sx={{ p: 2 }}>
           <Typography variant="subtitle1" gutterBottom color="primary">
-            Age Settings
+            {daysTitle}
           </Typography>
           <TextField
             id="age-min"

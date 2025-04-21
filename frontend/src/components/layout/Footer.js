@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { headerFooterLabels } from "../../constant/label";
+const { footer } = headerFooterLabels;
 
 const Footer = () => {
   return (
@@ -14,7 +16,7 @@ const Footer = () => {
       }}
     >
       <Typography variant="body2" color="text.secondary">
-        &copy; 2025 Heatmap Generator
+        &copy; {footer}
       </Typography>
     </Box>
   );

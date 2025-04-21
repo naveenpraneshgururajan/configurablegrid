@@ -35,7 +35,7 @@ describe("NumberHeatmapSettings", () => {
     // Check headings
     expect(screen.getByText("Sales Settings")).toBeInTheDocument();
     expect(screen.getByText("Revenue Settings")).toBeInTheDocument();
-    expect(screen.getByText("Profit Margin Settings")).toBeInTheDocument();
+    expect(screen.getByText("Profit Settings")).toBeInTheDocument();
   });
 
   test("renders input fields with correct default values", () => {

@@ -145,9 +145,7 @@ describe("HomePage Component", () => {
 
     expect(screen.getByText("Heatmap Generator")).toBeInTheDocument();
     expect(
-      screen.getByText(
-        "Generate customized heatmaps based on your specific data requirements."
-      )
+      screen.getByText("Shows Different varieties how Heatmaps can be plotted")
     ).toBeInTheDocument();
   });
 });

@@ -112,3 +112,46 @@ export const timeHeatmapLabels = {
   ]
 }`,
 };
+
+export const headerFooterLabels = {
+  header: `HeatMap Generator`,
+  theme: `Theme:`,
+  footer: `2025 Heatmap Generator`,
+};
+
+export const appLabels = {
+  viewButton: `View HeatMap`,
+  title: `Heatmap Generator`,
+  description: `Shows Different varieties how Heatmaps can be plotted`,
+  numberHeatmapTitle: `Number Heatmaps`,
+  numberHeatmapDescription: `Displays Heatmap based on inidividual Cell values for Sales/Revenue and Profit Margins.`,
+  timeHeatmapTitle: `Time Heatmaps`,
+  timeHeatmapDescription: `Utilises a single Cell value and highlights the entire row of data.`,
+  rangeHeatmapTitle: `Range Heatmaps`,
+  rangeHeatmapDescription: `Highlights the inidividual test within the Cells to differentiate the values.`,
+  settingConfigureTitle: `Configure Heatmap Settings`,
+  settingsTabLabel: {
+    numberMap: `Number Heatmap`,
+    timeMap: `Time Heatmap`,
+    rangeMap: `Range Heatmap`,
+  },
+  loading: `Loading configuration...`,
+  updateSettingsButton: `Update Configuration`,
+  settingsTabItemsLabels: {
+    numberTab: {
+      salesTitle: `Sales Settings`,
+      revenueTitle: `Revenue Settings`,
+      profitTitle: `Profit Settings`,
+    },
+    timeTab: {
+      daysTitle: `Days Settings`,
+    },
+    rangeTitle: {
+      cpuTitle: `CPU Usage Ranges`,
+      memoryTitle: `Memory Usage Ranges`,
+      colorLowConfig: `Low Range (Green)`,
+      colorMediumConfig: `Medium Range (Orange)`,
+      colorHighConfig: `High Range (Red)`,
+    },
+  },
+};

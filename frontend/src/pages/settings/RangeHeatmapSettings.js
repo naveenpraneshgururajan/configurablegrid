@@ -1,6 +1,18 @@
 import React from "react";
 import { Grid, Paper, Typography, TextField, Box } from "@mui/material";
+import { appLabels } from "../../constant/label";
 
+const {
+  settingsTabItemsLabels: {
+    rangeTitle: {
+      cpuTitle,
+      memoryTitle,
+      colorLowConfig,
+      colorMediumConfig,
+      colorHighConfig,
+    },
+  },
+} = appLabels;
 const RangeHeatmapSettings = ({ configuration, onChange }) => {
   if (!configuration) return null;
 
@@ -13,13 +25,13 @@ const RangeHeatmapSettings = ({ configuration, onChange }) => {
       <Grid item xs={12} md={6}>
         <Paper sx={{ p: 2 }}>
           <Typography variant="subtitle1" gutterBottom color="primary">
-            CPU Usage Ranges
+            {cpuTitle}
           </Typography>
 
           {/* Low Range (Green) */}
           <Box sx={{ mb: 2, p: 1, borderLeft: "4px solid #008000" }}>
             <Typography color="primary" variant="subtitle2" gutterBottom>
-              Low Range (Green)
+              {colorLowConfig}
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={4}>
@@ -66,7 +78,7 @@ const RangeHeatmapSettings = ({ configuration, onChange }) => {
           {/* Medium Range (Orange) */}
           <Box sx={{ mb: 2, p: 1, borderLeft: "4px solid #FFA500" }}>
             <Typography variant="subtitle2" gutterBottom color="primary">
-              Medium Range (Orange)
+              {colorMediumConfig}
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={4}>
@@ -113,7 +125,7 @@ const RangeHeatmapSettings = ({ configuration, onChange }) => {
           {/* High Range (Red) */}
           <Box sx={{ mb: 2, p: 1, borderLeft: "4px solid #FF0000" }}>
             <Typography variant="subtitle2" gutterBottom color="primary">
-              High Range (Red)
+              {colorHighConfig}
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={4}>
@@ -163,13 +175,13 @@ const RangeHeatmapSettings = ({ configuration, onChange }) => {
       <Grid item xs={12} md={6}>
         <Paper sx={{ p: 2 }}>
           <Typography variant="subtitle1" gutterBottom color="primary">
-            Memory Usage Ranges
+            {memoryTitle}
           </Typography>
 
           {/* Low Range (Green) */}
           <Box sx={{ mb: 2, p: 1, borderLeft: "4px solid #008000" }}>
             <Typography variant="subtitle2" gutterBottom color="primary">
-              Low Range (Green)
+              {colorLowConfig}
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={4}>
@@ -216,7 +228,7 @@ const RangeHeatmapSettings = ({ configuration, onChange }) => {
           {/* Medium Range (Orange) */}
           <Box sx={{ mb: 2, p: 1, borderLeft: "4px solid #FFA500" }}>
             <Typography variant="subtitle2" gutterBottom color="primary">
-              Medium Range (Orange)
+              {colorMediumConfig}
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={4}>
@@ -263,7 +275,7 @@ const RangeHeatmapSettings = ({ configuration, onChange }) => {
           {/* High Range (Red) */}
           <Box sx={{ mb: 2, p: 1, borderLeft: "4px solid #FF0000" }}>
             <Typography variant="subtitle2" gutterBottom color="primary">
-              High Range (Red)
+              {colorHighConfig}
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={4}>

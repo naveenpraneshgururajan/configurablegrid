@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Paper, Box, Typography, Button } from "@mui/material";
+import { appLabels } from "../../constant/label";
 
 const HeatmapCard = ({ title, description, icon, linkTo }) => {
   return (
@@ -72,7 +73,7 @@ const HeatmapCard = ({ title, description, icon, linkTo }) => {
               borderRadius: 1.5,
             }}
           >
-            View Heatmap
+            {appLabels.viewButton}
           </Button>
         </Box>
       </Box>

@@ -18,6 +18,9 @@ import NumbersIcon from "@mui/icons-material/Numbers";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import HomeIcon from "@mui/icons-material/Home";
+import { headerFooterLabels } from "../../constant/label";
+
+const { header, theme } = headerFooterLabels;
 
 const getIconForRoute = (routeId) => {
   switch (routeId) {
@@ -78,7 +81,7 @@ const Header = ({ darkMode, toggleDarkMode, currentHeatmapType }) => {
           component="div"
           sx={{ color: "primary.main", fontWeight: 600 }}
         >
-          HeatMap Generator
+          {header}
         </Typography>
 
         {/* Theme Toggle */}
@@ -103,7 +106,7 @@ const Header = ({ darkMode, toggleDarkMode, currentHeatmapType }) => {
               fontWeight: "medium",
             }}
           >
-            Theme:
+            {theme}
           </Typography>
           <FormControlLabel
             control={

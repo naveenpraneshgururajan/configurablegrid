@@ -1,5 +1,11 @@
 import React from "react";
 import { Grid, Paper, Typography, TextField } from "@mui/material";
+import { appLabels } from "../../constant/label";
+const {
+  settingsTabItemsLabels: {
+    numberTab: { salesTitle, revenueTitle, profitTitle },
+  },
+} = appLabels;
 
 const NumberHeatmapSettings = ({ configuration, onChange }) => {
   if (!configuration) return null;
@@ -16,7 +22,7 @@ const NumberHeatmapSettings = ({ configuration, onChange }) => {
       <Grid item xs={12} md={4}>
         <Paper sx={{ p: 2 }}>
           <Typography variant="subtitle1" gutterBottom color="primary">
-            Sales Settings
+            {salesTitle}
           </Typography>
           <TextField
             id="sales-min"
@@ -45,7 +51,7 @@ const NumberHeatmapSettings = ({ configuration, onChange }) => {
       <Grid item xs={12} md={4}>
         <Paper sx={{ p: 2 }}>
           <Typography variant="subtitle1" gutterBottom color="primary">
-            Revenue Settings
+            {revenueTitle}
           </Typography>
           <TextField
             id="revenue-min"
@@ -74,7 +80,7 @@ const NumberHeatmapSettings = ({ configuration, onChange }) => {
       <Grid item xs={12} md={4}>
         <Paper sx={{ p: 2 }}>
           <Typography variant="subtitle1" gutterBottom color="primary">
-            Profit Margin Settings
+            {profitTitle}
           </Typography>
           <TextField
             id="profit-min"

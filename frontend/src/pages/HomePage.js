@@ -10,6 +10,21 @@ import RangeHeatmapSettings from "./settings/RangeHeatmapSettings";
 import NumbersIcon from "@mui/icons-material/Numbers";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import { appLabels } from "../constant/label";
+
+const {
+  title,
+  description,
+  numberHeatmapDescription,
+  numberHeatmapTitle,
+  timeHeatmapTitle,
+  timeHeatmapDescription,
+  rangeHeatmapTitle,
+  rangeHeatmapDescription,
+  settingConfigureTitle,
+  updateSettingsButton,
+  settingsTabLabel: { numberMap, timeMap, rangeMap },
+} = appLabels;
 
 const HomePage = ({ configurations, loading, updateConfiguration }) => {
   const [activeTab, setActiveTab] = useState("number");
@@ -224,10 +239,10 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
     <Box>
       <Box sx={{ textAlign: "center", mb: 4 }}>
         <Typography variant="h4" color="primary" gutterBottom>
-          Heatmap Generator
+          {title}
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Shows Different varieties how Heatmaps can be plotted
+          {description}
         </Typography>
       </Box>
 
@@ -244,8 +259,8 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         {/* Number Heatmap Card */}
         <Box sx={{ flex: 1, minWidth: { xs: "100%", md: "0" } }}>
           <HeatmapCard
-            title="Number Heatmaps"
-            description="Displays Heatmap based on inidividual Cell values for Sales/Revenue and Profit Margins."
+            title={numberHeatmapTitle}
+            description={numberHeatmapDescription}
             icon={<NumbersIcon fontSize="medium" />}
             linkTo={routes.numberHeatmap}
           />
@@ -254,8 +269,8 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         {/* Time Heatmap Card */}
         <Box sx={{ flex: 1, minWidth: { xs: "100%", md: "0" } }}>
           <HeatmapCard
-            title="Time Heatmaps"
-            description="Utilises a single Cell value and highlights the entire row of data."
+            title={timeHeatmapTitle}
+            description={timeHeatmapDescription}
             icon={<AccessTimeIcon fontSize="medium" />}
             linkTo={routes.timeHeatmap}
           />
@@ -264,8 +279,8 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         {/* Range Heatmap Card */}
         <Box sx={{ flex: 1, minWidth: { xs: "100%", md: "0" } }}>
           <HeatmapCard
-            title="Range Heatmaps"
-            description="Highlights the inidividual test within the Cells to differentiate the values."
+            title={rangeHeatmapTitle}
+            description={rangeHeatmapDescription}
             icon={<BarChartIcon fontSize="medium" />}
             linkTo={routes.rangeHeatmap}
           />
@@ -275,7 +290,7 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
       {/* Configuration Section */}
       <Paper elevation={2} sx={{ mt: 4, p: 3, borderRadius: 2 }}>
         <Typography variant="h5" color="primary" gutterBottom>
-          Configure Heatmap Settings
+          {settingConfigureTitle}
         </Typography>
 
         <Tabs
@@ -283,13 +298,13 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
           onChange={(e, newValue) => setActiveTab(newValue)}
           sx={{ borderBottom: 1, borderColor: "divider", mb: 3 }}
         >
-          <Tab value="number" label="Number Heatmap" />
-          <Tab value="time" label="Time Heatmap" />
-          <Tab value="range" label="Range Heatmap" />
+          <Tab value="number" label={numberMap} />
+          <Tab value="time" label={timeMap} />
+          <Tab value="range" label={rangeMap} />
         </Tabs>
 
         {loading ? (
-          <Typography>Loading configuration...</Typography>
+          <Typography>{appLabels.loading}</Typography>
         ) : (
           <>
             {activeTab === "number" && (
@@ -326,7 +341,7 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
                 onClick={handleUpdateConfig}
                 disabled={loading}
               >
-                Update Configuration
+                {updateSettingsButton}
               </Button>
             </Box>
           </>

@@ -29,7 +29,7 @@ describe("TimeHeatmapSettings", () => {
     );
 
     // Check heading
-    expect(screen.getByText("Age Settings")).toBeInTheDocument();
+    expect(screen.getByText("Days Settings")).toBeInTheDocument();
   });
 
   test("renders input fields with correct default values", () => {
