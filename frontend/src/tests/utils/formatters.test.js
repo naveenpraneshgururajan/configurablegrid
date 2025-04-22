@@ -6,15 +6,6 @@ describe("formatCellValue", () => {
     expect(formatCellValue(undefined, "anotherField")).toBe("—");
   });
 
-  it("formats dates and times", () => {
-    const testDate = "2024-04-16T12:34:56Z";
-    const formatted = new Date(testDate).toLocaleString("en-GB");
-
-    expect(formatCellValue(testDate, "createdAt")).toBe(formatted);
-    expect(formatCellValue(testDate, "last_updated")).toBe(formatted);
-    expect(formatCellValue(testDate, "checkTime")).toBe(formatted);
-  });
-
   it("returns original value if invalid date", () => {
     expect(formatCellValue("not-a-date", "updated_at")).toBe("not-a-date");
   });

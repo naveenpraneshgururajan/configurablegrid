@@ -6,7 +6,7 @@ import {
 } from "../../utils/styleHelpers";
 import { formatCellValue } from "../../utils/formatters";
 
-const GridCell = ({ value, column, row, cellStyles }) => {
+const GridCell = ({ value, column, cellStyles }) => {
   // Get the basic cell style from the column configuration
   const getCellStyle = () => {
     if (!column.style) return {};

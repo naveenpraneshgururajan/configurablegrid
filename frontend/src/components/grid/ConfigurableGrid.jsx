@@ -159,7 +159,6 @@ const ConfigurableGrid = ({ configId }) => {
                         key={`${row.id}-${column.field}`}
                         value={row[column.field]}
                         column={column}
-                        row={row}
                         cellStyles={config.cellStyles}
                       />
                     ))}

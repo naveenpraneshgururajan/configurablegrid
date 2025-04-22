@@ -144,40 +144,12 @@ export const useConfigurations = () => {
     </Snackbar>
   );
 
-  // Method to refresh configurations
-  const refreshConfigurations = async () => {
-    try {
-      setLoading(true);
-      const response = await getAllConfigurations();
-      setConfigurations({
-        numberheatmap: response.configurations.find(
-          (c) => c.id === "numberheatmap"
-        ),
-        timestamp: response.configurations.find((c) => c.id === "timestamp"),
-        rangeheatmap: response.configurations.find(
-          (c) => c.id === "rangeheatmap"
-        ),
-      });
-      return response;
-    } catch (error) {
-      setSnackbar({
-        open: true,
-        message: "Failed to refresh configurations",
-        severity: "error",
-      });
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return {
     configurations,
     loading,
     currentHeatmapType,
     setCurrentHeatmapType,
     updateConfiguration,
-    refreshConfigurations,
     snackbar: {
       ...snackbar,
       component: snackbarComponent,
