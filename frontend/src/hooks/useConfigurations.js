@@ -23,7 +23,6 @@ export const useConfigurations = () => {
   useEffect(() => {
     const fetchConfigurations = async () => {
       try {
-        console.log("inside try");
         const response = await getAllConfigurations();
         setLoading(false);
         setConfigurations({
