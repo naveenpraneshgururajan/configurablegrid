@@ -235,8 +235,6 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
     }
   };
 
-  console.log("inside homepage", loading);
-
   return (
     <Box>
       <Box sx={{ textAlign: "center", mb: 4 }}>
