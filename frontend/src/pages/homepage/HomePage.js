@@ -209,7 +209,6 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
       }
     } catch (error) {
       console.error("Error updating configuration:", error);
-    } finally {
     }
   };
 
