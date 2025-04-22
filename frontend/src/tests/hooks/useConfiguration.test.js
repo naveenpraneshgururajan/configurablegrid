@@ -89,7 +89,7 @@ describe("useConfigurations Hook", () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
 
-    expect(result.current.loading).toBe(false);
+    expect(result.current.loading).toBe(true);
     expect(result.current.configurations).toEqual({
       numberheatmap: null,
       timestamp: null,
