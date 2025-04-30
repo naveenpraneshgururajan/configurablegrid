@@ -208,7 +208,7 @@ const HomePage = ({ configurations, loading, updateConfiguration }) => {
         const result = await updateConfiguration(type, updates);
       }
     } catch (error) {
-      console.error("Error updating configuration:", error);
+      console.error("Error updating Config:", error);
     }
   };
 

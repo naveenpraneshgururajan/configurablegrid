@@ -66,14 +66,13 @@ export const getConfiguration = async (configId) => {
  * @param {string} configId - Configuration ID
  * @param {number} page - Page number
  * @param {number} pageSize - Page size
- * @returns {Promise} - Resolves to data object with pagination info
+ * @returns {Promise} - Resolve to data object with pagination info
  */
 export const getGridData = async (configId, page = 1, pageSize = 10) => {
   try {
     const url = new URL(`${API_BASE_URL}/data/${configId}`);
     url.searchParams.append("page", page);
     url.searchParams.append("page_size", pageSize);
-
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
