@@ -49,7 +49,7 @@ const ConfigurableGrid = ({ configId }) => {
         if (!result || !result.data) {
           throw new Error("Invalid data response");
         }
-
+        console.log("");
         setData(result.data);
         setPagination({
           ...pagination,
