@@ -17,10 +17,6 @@ const ConfigurableGrid = ({ configId }) => {
     total: 0,
     totalPages: 0,
   });
-  const [sortConfig, setSortConfig] = useState({
-    key: null,
-    direction: "asc",
-  });
 
   // Fetch configuration
   useEffect(() => {
@@ -69,28 +65,6 @@ const ConfigurableGrid = ({ configId }) => {
 
     fetchData();
   }, [config, configId, pagination.page, pagination.pageSize]);
-
-  // Handle sorting
-  const handleSort = (field) => {
-    let direction = "asc";
-    if (sortConfig.key === field && sortConfig.direction === "asc") {
-      direction = "desc";
-    }
-    setSortConfig({ key: field, direction });
-
-    // Sort the data
-    const sortedData = [...data].sort((a, b) => {
-      if (a[field] < b[field]) {
-        return direction === "asc" ? -1 : 1;
-      }
-      if (a[field] > b[field]) {
-        return direction === "asc" ? 1 : -1;
-      }
-      return 0;
-    });
-
-    setData(sortedData);
-  };
 
   const getRowStyle = (row, columns) => {
     const ageColumn = columns.find((col) => col.field === "age");
@@ -142,12 +116,7 @@ const ConfigurableGrid = ({ configId }) => {
               <thead>
                 <tr>
                   {config.columns.map((column) => (
-                    <GridHeader
-                      key={column.field}
-                      column={column}
-                      sortConfig={sortConfig}
-                      onSort={handleSort}
-                    />
+                    <GridHeader key={column.field} column={column} />
                   ))}
                 </tr>
               </thead>
