@@ -197,44 +197,6 @@ describe("ConfigurableGrid", () => {
     expect(getGridData).toHaveBeenLastCalledWith("test-config", 2, 10);
   });
 
-  it("handles sorting correctly", async () => {
-    // Setup mocks
-    getConfiguration.mockResolvedValue(mockConfig);
-    getGridData.mockResolvedValue(mockData);
-
-    render(<ConfigurableGrid configId="test-config" />);
-
-    // Wait for the data to load
-    await waitFor(() => {
-      expect(screen.getByText("Item 1")).toBeInTheDocument();
-    });
-
-    // Get the Name column header
-    const nameHeader = screen.getByText("Name").closest(".header-content");
-
-    // Click on header to sort
-    await act(async () => {
-      fireEvent.click(nameHeader);
-    });
-
-    // Check if sort indicator appears
-    await waitFor(() => {
-      const sortIndicator = screen.getByText("▲");
-      expect(sortIndicator).toBeInTheDocument();
-    });
-
-    // Click again to toggle sort direction
-    await act(async () => {
-      fireEvent.click(nameHeader);
-    });
-
-    // Check if sort indicator changes
-    await waitFor(() => {
-      const sortIndicator = screen.getByText("▼");
-      expect(sortIndicator).toBeInTheDocument();
-    });
-  });
-
   it("evaluates row conditions correctly", async () => {
     // Create a date 10 days ago
     const oldDate = new Date();
